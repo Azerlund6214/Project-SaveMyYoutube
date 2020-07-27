@@ -1,0 +1,52 @@
+url=https://r2---sn-jvhnu5g-n8vk.googlevideo.com/videoplayback ? 
+ratebypass=yes&
+fvip=2&
+initcwndbps=1398750&
+ipbits=0&
+c=WEB&
+itag=22&
+expire=1543296415&
+sparams=expire,ei,ip,source,id,itag,dur,mime,lmt,ratebypass,requiressl,ipbits&
+mime=video/mp4&mt=1543274691&
+mm=31,26&
+mn=sn-jvhnu5g-n8vk,sn-4g5ednse&
+id=o-AMt7EWnrBr42QM12q2mloyHG1VRdfiKAeBPVYnAwF7ef&
+source=youtube&
+lsparams=initcwndbps,pl,ms,mv,mm,mn&
+mv=m&
+dur=414.243&
+lmt=1472346135279163&
+lsig=ADGRJxowRAIgDj7q4MYvQv30cbb98IxVINnuAF2p1mE-6BwvXhDAjnsCIFEUXABzKWF39A_lgkWXr7Jy6qJhih2crOVfyMUCE7JB&
+ms=au,onr&
+ip=109.252.58.227&
+requiressl=yes&
+pl=16&
+sig=AIpKg0IwRQIgb0rM3-wtWNExDHlsoZl86NEjlXNozMvgLKF8DQUYx8MCIQDkJCoaE8DZ704aNmRROnrdTxEydI29y0HXvSVfdFILWw==&
+ei=PoH8W_C_NcLl7ATz-If4DQ&
+quality=hd720&
+itag=22&
+type=video/mp4;
+
+ codecs="avc1.64001F, mp4a.40.2",
+
+ 
+ 
+ 
+url=https://r2---sn-jvhnu5g-n8vk.googlevideo.com/videoplayback ? 
+ratebypass=yes&fvip=2&initcwndbps=1398750&ipbits=0&gir=yes&c=WEB&itag=43&expire=1543296415&sparams=expire,ei,ip,source,id,dur,itag,mime,lmt,gir,requiressl,clen,ipbits,ratebypass&mime=video/webm&mt=1543274691&mm=31,26&mn=sn-jvhnu5g-n8vk,sn-4g5ednse&id=o-AMt7EWnrBr42QM12q2mloyHG1VRdfiKAeBPVYnAwF7ef&clen=11447537&source=youtube&lsparams=initcwndbps,pl,ms,mv,mm,mn&mv=m&dur=0.000&ei=PoH8W_C_NcLl7ATz-If4DQ&lsig=ADGRJxowRgIhAJiyzqBe2HKn4BPJVuYtOn5oI0oaPkr7h8G5HVJfu2ulAiEA_D66em7wecXGjpCpfyGd6Ex2p9hGVImp7-W36rX2Gb8=&ms=au,onr&ip=109.252.58.227&requiressl=yes&pl=16&sig=AIpKg0IwRQIgJ0-9BihCsHBT4t2cuccF91LWmHcfuKucsRL-ETIDJm8CIQDzWzu2J0ItKU5TDXqQ0RHjLI6sl88w7erYHErC3Mz1mw==&lmt=1450476760914113&quality=medium&itag=43&type=video/webm; codecs="vp8.0, vorbis",
+
+url=https://r2---sn-jvhnu5g-n8vk.googlevideo.com/videoplayback ? 
+ratebypass=yes&fvip=2&initcwndbps=1398750&ipbits=0&gir=yes&c=WEB&itag=18&expire=1543296415&sparams=expire,ei,ip,source,id,dur,itag,mime,lmt,gir,requiressl,clen,ipbits,ratebypass&mime=video/mp4&mt=1543274691&mm=31,26&mn=sn-jvhnu5g-n8vk,sn-4g5ednse&id=o-AMt7EWnrBr42QM12q2mloyHG1VRdfiKAeBPVYnAwF7ef&clen=16253842&source=youtube&lsparams=initcwndbps,pl,ms,mv,mm,mn&mv=m&dur=414.243&ei=PoH8W_C_NcLl7ATz-If4DQ&lsig=ADGRJxowRAIgbm5frDTtBZ4UyPQWd7UIVdGpURQpBkEP7gLsZNnEnBoCIF-nNzSKYnjf__sunOFpRzEno49lJe3XyqUOYzmaeDmm&ms=au,onr&ip=109.252.58.227&requiressl=yes&pl=16&sig=AIpKg0IwRgIhAMnpDEFrsmfdSIrvVbkDUlhoPJJptb6gx0BzolOn0ImyAiEA7hzlN-J4mjpjyzL0up4tM27sCNIICSII4e_hvynmN0A=&lmt=1450681141407737&quality=medium&itag=18&type=video/mp4; codecs="avc1.42001E, mp4a.40.2",
+
+url=https://r2---sn-jvhnu5g-n8vk.googlevideo.com/videoplayback ? 
+fvip=2&initcwndbps=1398750&ipbits=0&gir=yes&c=WEB&itag=36&expire=1543296415&sparams=expire,ei,ip,source,id,dur,itag,mime,lmt,gir,requiressl,clen,ipbits&mime=video/3gpp&mt=1543274691&mm=31,26&mn=sn-jvhnu5g-n8vk,sn-4g5ednse&id=o-AMt7EWnrBr42QM12q2mloyHG1VRdfiKAeBPVYnAwF7ef&clen=4624433&source=youtube&lsparams=initcwndbps,pl,ms,mv,mm,mn&mv=m&dur=414.290&ei=PoH8W_C_NcLl7ATz-If4DQ&lsig=ADGRJxowRAIgcmTuSEvg7otESrSCIrMnS4lUws4GVMGTPYChcKvZADUCIA5wqdpo-n6Si5NJ8zH74gJEvPA40JVzsekoB81jLHjp&ms=au,onr&ip=109.252.58.227&requiressl=yes&pl=16&sig=AIpKg0IwRQIgEz8rMxmeLOM365jxNdE0h7Gw2v-XTVNx_KEJEqxIpHYCIQCh7TZK1NkLq6Y_lM9KAepI4XsE4RTj6JQYkx0ShIpSYQ==&lmt=1450475957844328&quality=small&itag=36&type=video/3gpp; codecs="mp4v.20.3, mp4a.40.2",
+
+url=https://r2---sn-jvhnu5g-n8vk.googlevideo.com/videoplayback ? 
+fvip=2&initcwndbps=1398750&ipbits=0&gir=yes&c=WEB&itag=17&expire=1543296415&sparams=expire,ei,ip,source,id,dur,itag,mime,lmt,gir,requiressl,clen,ipbits&mime=video/3gpp&mt=1543274691&mm=31,26&mn=sn-jvhnu5g-n8vk,sn-4g5ednse&id=o-AMt7EWnrBr42QM12q2mloyHG1VRdfiKAeBPVYnAwF7ef&clen=1821870&source=youtube&lsparams=initcwndbps,pl,ms,mv,mm,mn&mv=m&dur=414.290&ei=PoH8W_C_NcLl7ATz-If4DQ&lsig=ADGRJxowRgIhAIYnW3iAD1bwj-bgu_qSkNdULfb75NhxHfRtuEYnDFOGAiEAg4wvluRU9WO6sxzGvgTzFEjB-96E0HSjxHxCCeuqMU4=&ms=au,onr&ip=109.252.58.227&requiressl=yes&pl=16&sig=AIpKg0IwRgIhAP586DS4lJOGhxS_T6AfV-Rg-uwrvwfRmxIKDhRWU9ztAiEAhuKvUN7xIM68vI-iOPTdvoBqW3xrZcqI0xx3JkFNgGo=&lmt=1450475951836195&quality=small
+
+
+
+
+
+
+123
