@@ -189,7 +189,7 @@ class UNIV_PHP_YOUTUBE
 		
 		if( count($Buf_Video_ID) === 0 )
 		{
-			$this->ERROR_HANDLER( "NOT_SOLVED_VIDEO_ID" , "Get_Video_ID: Не нашел ни одного VIDEO_ID= ". count($Buf_Video_ID) ." => ".$this->Target_Video_URL );
+			$this->ERROR_HANDLER( "NOT_SOLVED_VIDEO_ID" , "Get_Video_ID: Не нашел ни одного VIDEO_ID= ". count($Buf_Video_ID) ." => ".$URL );
 		}
 		
 		
