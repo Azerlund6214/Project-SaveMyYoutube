@@ -1,8 +1,5 @@
 ﻿<?php #261118 #271118 #281118
 
-if (defined('PRINT_ECHO__UNIV_PHP_CLASSES'))
-	echo "<br><font size=3 color=green> Объявлен класс </font> => <font color=blue>YOUTUBE = (UNIV_PHP_YOUTUBE).</font>";
-
 	
 
 # Записывать в переменную "UN_YOUTUBE"
@@ -14,14 +11,10 @@ if (defined('PRINT_ECHO__UNIV_PHP_CLASSES'))
 
 class UNIV_PHP_YOUTUBE
 {
-	
-	public $Class_Name = "UNIV_PHP_YOUTUBE";
-	
+		
 	public $Get_Video_Info_URL_Pattern = "https://www.youtube.com/get_video_info?video_id="; # ОБЯЗАТЕЛЬНО протокол
 	
 	# Много дублирующихся данных в пееменых(Ужать все в 1 переменную ПОТОМ(когда все будет отлажено))
-	public $Full_Target_Video_URL = "";
-	public $Target_Video_URL = "";
 	public $Video_ID = "";
 	
 	public $Video_Info = "";
@@ -29,11 +22,10 @@ class UNIV_PHP_YOUTUBE
 	public $Video_Status_Is_OK = "Default"; # Бесполезное опле, чисто для удобства дебага
 	
 	public $Player_Response_JSON_Full; # Кусок из Video_Info (копия)
-	public $Player_Response_JSON_Erased; #  ВЫРЕЗАТЬ!!!  # Кусок из всей инфы(еще копия)
 	
 	
 	public $FIN_Video_Info_Asoc = array(); # 
-	public $FIN_Video_Thimbnails_Url_Arr = array(); # Просто ссылки
+	public $FIN_Video_Thimbnails_Arr = array(); # Ссылки и размеры
 	public $FIN_Video_Itag_Info_Asoc_FULL = array(); # [itag][ключи]
 	public $FIN_Video_Itag_Info_Asoc_Video_MP4 = array(); # ТОЛЬКО MP$
 	public $FIN_Video_Itag_Info_Asoc_Audio = array(); # ТОЛЬКО AUDIO
@@ -67,17 +59,8 @@ class UNIV_PHP_YOUTUBE
 	
 	#############################################################
 	
-	function __construct()
-	{
-		if (defined('PRINT_ECHO__UNIV_PHP_CLASSES_CONSTRUCT'))
-			echo "<br> Создан класс ".$this->Class_Name; 
-	}
-	
-	function __destruct() 
-	{	
-		if (defined('PRINT_ECHO__UNIV_PHP_CLASSES_DESTRUCT'))
-			echo "<br> Уничтожается класс ".$this->Class_Name ;
-	}
+	function __construct()	{  }	
+	function __destruct() 	{  }
 	
 	#############################################################
 	
@@ -87,13 +70,15 @@ class UNIV_PHP_YOUTUBE
 	{
 		
 		# Мне для дебага
-		if( defined("SHOW_MY_ERROR_HANDLER_MSG") )
-		{
+		//if( defined("SHOW_MY_ERROR_HANDLER_MSG") )
+		//{
 			echo "<hr color=yellow>";		
 			echo "<br>$ERR_NAME";
 			echo "<br>$Description_My";
-		}
+		//}
 		
+		
+		// Сделать это асоц массивом
 		switch( $ERR_NAME )
 		{
 			case "NOT_SOLVED_VIDEO_ID":
@@ -140,118 +125,19 @@ class UNIV_PHP_YOUTUBE
 			echo "EXIT";
 		}
 		
-		exit;
+		exit("ERROR handler");
 		
 	}
 	
 	
 	#############################################################
 	
-	function Set_URL( $URL )
-	{
-		$this -> Full_Target_Video_URL = $URL;
-	}
-	
-	# Уборка ВСЕХ пробелов (и с боков)
-	function Prepare_URL( )
-	{
-		# Убрать ВСЕ пробелы
-		$this -> Target_Video_URL = preg_replace( '/ {1,}/'  ,  ''  , $this->Full_Target_Video_URL ) ; # Робит
-	}
-	
-	
-	
-	# УБРАТЬ СОВСЕМ
-	# Доделать регулярки
-	# Проверка на strstr(youtube.com/)  ,  один ?   ,  одно =
-	function Verify_URL( )
-	{
-		# Формат ТОЛЬКО  http://www.youtube.com/watch?v=JYATEN_TzhA
-		# Обязательно .../watch? ... & v=123 & ...
-	
-	
-		# Проверка на очень длинную строку(вдруг специально вбросят)
-		
-		# Проверить strstr(youtube.com/)
-		
-		
-		
-		//$arr = array();
-		
-		#$reg1 = "^.*((youtu.be"  .  "\\/)"  .  "|(v\\/)|(\\/u\\/w\\/)|(embed\\/)|(watch\\?))\\??v?=?([^#\\&\\?]*).*";
-		#$reg1 = "^.*((youtu.be"  .  "\/)"  .  "|(v\/)|(\/u\/w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*";
-		
-		#$reg1= "(?:youtube(?:-nocookie)?\\.com\\/(?:[^\\/\\n\\s]+\\/\\S+\\/|(?:v|e(?:mbed)?)\\/|\\S*?[?&]v=)|youtu\\.be\\/)([a-zA-Z0-9_-]{11})";
-		#$reg1 = "/(youtu\.be\/|youtube\.com\/(watch\?(.*&)?v=|(embed|v)\/))([^\?&\"'>]+)/";
-		
-		#прошел $reg1 = "/(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})\W/";
-		
-		//ошибка $reg1 = "/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*)";
-		
-		/* ошибка $reg1 = "v=([a-zA-Z0-9\_\-]+)&?")[1]"; */
-		/* ошибка $reg1 = "list=([a-zA-Z0-9\-\_]+)&?"; */
-		
 
-		///* 
-		
-		echo $this->Target_Video_URL."<br>";
-		#echo $reg1."<br>";
-		
-		
-		#echo preg_quote($reg1, '/') ;
-		#$reg1 = preg_quote($reg1, '/') ;
-		
-		
-		
-		#exit;
-		
-		$a = preg_match("", $this->Target_Video_URL , $arr );
-		
-		#$arr = preg_split ( $reg1 , $this->Target_Video_URL  );
-		#$a = preg_match( $reg1 , $this->Target_Video_URL , $arr  );
-		
-		echo "<pre>";
-		print_r($a);
-		print_r($arr);
-		echo "</pre>";
-		
-		// */
-		
-		exit;
-		
-		
-		
-		
+	
 
-		#$this->Target_Video_URL
-		
-		
-		
-		$URL_Parametres_ALL = explode( "?" , $user_request_url ); # [0]=не нужное  [1]=ВСЕ параметры ссылки
 	
 	
-		# Проверка есть ли ? и сколько их (ифы внизу)
-		if( count($URL_Parametres_ALL) === 1 )
-		{
-			echo "<br>Нецелевой формат URL (Нет ? => нет параметров) = $user_request_url";
-			exit;
-		}
-		
-		# Проверка есть ли = и сколько их
-		if( count($URL_Parametres_ALL) <= 1 )
-		{
-			echo "<br>Непровильный формат URL (Несколько ?) = $user_request_url";
-			exit;
-		}
-		
-		
-		
-		
-		
-		
-		# Делаем хттп запрос 200
-	
-	}
+
 	
 	
 	function Get_Playlist_ID( )
@@ -261,8 +147,14 @@ class UNIV_PHP_YOUTUBE
 	# Работает
 	# Запись в поле класса ИЛИ echo ERROR
 	# Сейчас есть ТОЛЬКО через регулярки
-	function Get_Video_ID( )
+	function Get_Video_ID( $URL )
 	{
+		# Убрать ВСЕ пробелы
+		$URL = preg_replace( '/ {1,}/'  ,  ''  , $URL ) ; # Робит
+		
+		
+		
+		
 		/*
 		РАБОТАЕТ ДЛЯ:
 		https://www.youtube.com/v/VIDEOID
@@ -281,11 +173,10 @@ class UNIV_PHP_YOUTUBE
 		https://www.youtube.com/watch?vi=VIDEOID
 		*/
 		
-		#9из12
 		# Сам переделывал
 		$Pattern = "#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v/)[^&\n]+|(?<=embed/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#";
-
-		preg_match( $Pattern , $this->Target_Video_URL , $Buf_Video_ID );
+		
+		preg_match( $Pattern , $URL , $Buf_Video_ID );
 		
 		
 		#echo "<br>1111111111=".count($Buf_Video_ID);
@@ -293,21 +184,17 @@ class UNIV_PHP_YOUTUBE
 		
 		
 		
-		if( count($Buf_Video_ID) === 1 )
+		if( count($Buf_Video_ID) === 0 )
 		{
-			$this->Video_ID = $Buf_Video_ID[0];
-			return;
-		}
-		else
-		{
-			$this->ERROR_HANDLER( "NOT_SOLVED_VIDEO_ID" , "Get_Video_ID:Нашел 0 или 2+ VIDEO_ID= ". count($Buf_Video_ID) ." => ".$this->Target_Video_URL );
+			$this->ERROR_HANDLER( "NOT_SOLVED_VIDEO_ID" , "Get_Video_ID: Не нашел ни одного VIDEO_ID= ". count($Buf_Video_ID) ." => ".$this->Target_Video_URL );
 		}
 		
 		
-		# $this->Target_Video_URL
-		# $this->Video_ID
+		$this->Video_ID = $Buf_Video_ID[0];
 		
-		#query
+		return;
+		
+		
 		
 		#parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
 		#echo $my_array_of_vars['v'];  
@@ -334,26 +221,17 @@ class UNIV_PHP_YOUTUBE
 
 	function Decode_Video_Info(  )
 	{		
+		// Декодируем дважды, БЕЗ буферной переменной ибо файл огромный
+		
+		//echo count($this->Video_Info)."<br>";
 		
 		$this -> Video_Info = urldecode( $this -> Video_Info ) ;
 		$this -> Video_Info = urldecode( $this -> Video_Info ) ;
 		
-	}
-	
-	
-	#############################################################
-	
-	### РАЗОБРАТЬСЯ !!!!!!
-	function Convert_Video_Info_To_Asoc()
-	{
-		set_error_handler(
-							function ($severity, $message, $file, $line) 
-							{				
-								$this->ERROR_HANDLER( "PARSE_STR__MORE_THAN_1000_VARS" , "Convert_Video_Info_To_Asoc: Ошибка=Больше 1000 переменных в parse_str");	
-								#throw new \ErrorException($message, $severity, $severity, $file, $line);	
-							}
-						 );
-		/*
+		
+		
+		
+		/* Convert_Video_Info_To_Asoc()
 			Все упадет если сткрока с JSON инфой окажется на 1000+ позиции
 			
 			Warning: parse_str(): Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini
@@ -362,94 +240,23 @@ class UNIV_PHP_YOUTUBE
 			http://php.net/manual/ru/info.configuration.php
 			Если входных переменных больше, чем задано директивой, выбрасывается предупреждение E_WARNING, а все последующие переменные в запросе игнорируются.
 		*/
+		
 		# Тут может выскачить Warning => Тогда дальнейшая логика проги работать не будет(50на50,как повезет)
+		
 		parse_str( $this->Video_Info , $this->Video_Info_Asoc );
-
-		restore_error_handler();
-
 		
-		return;
-		
-		# Попытка разбить массив на 2 части => не прокатило
-		$Buf = array_chunk($this->Video_Info, 2, TRUE);
-		
-		$Buf_Asoc_1 = array();
-		$Buf_Asoc_2 = array();
-		
-		parse_str( $Buf[0] , $Buf_Asoc_1 );
-		parse_str( $Buf[1] , $Buf_Asoc_2 );
-		
-		
-		$this->Video_Info_Asoc = $Buf_Asoc_1;
-		$this->Video_Info_Asoc += $Buf_Asoc_2;
-		
-		# unset $this->Video_Info
-		
-		# Проверка   что если элементов больше 1000 (будет warning)
-	}
-	
-	
-	
-	
-	function Check_Video_Response_Status()
-	{
-		
-		# Сделать отлов ключевого слова в JS и тогда из JS выводить текст о неверной ссылке
-		# $this->Video_Type
-		
-		
-		# NOTICE: Такие муторные if, чтобы не приходилось прямо тут парсить JSON(в нем есть уникальные коды ошибок и типов видео)
-		
-		# Работает
-		if( @$this->Video_Info_Asoc['livestream'] === "1" )
-		{		
-			$this->ERROR_HANDLER( "VIDEO_TYPE__LIVESTREAM" , "Check_Video_Response_Status: Ссылка ведет на прямую трнсляцию");	
-		}
-		
-		# Работает
-		# Можно оставить только последенее условие
-		if( @$this->Video_Info_Asoc['status'] === "fail" && @$this->Video_Info_Asoc['errorcode'] === "150" && strstr(@$this->Video_Info_Asoc['reason'] , "По требованию владельца это видео не воспроизводится на других сайтах."))
-		{
-			$this->ERROR_HANDLER( "VIDEO_TYPE__FORBIDDEN_TO_WATCH" , "Check_Video_Response_Status: Можно смотреть только на Youtube");
-			# В player_response есть рабочая ссылка(походу можно обойти запрет)
-		}
-		
-		# Работает
-		if( @$this->Video_Info_Asoc['status'] === "fail" && @$this->Video_Info_Asoc['errorcode'] === "2" )
-		{
-			$this->ERROR_HANDLER( "VIDEO_TYPE__NOT_EXIST" , "Check_Video_Response_Status: Видео не существует(Неверная ссылка)");
-		}
-		
-		# Работает
-		# Можно оставить только последенее условие
-		if( @$this->Video_Info_Asoc['status'] === "fail" && @$this->Video_Info_Asoc['errorcode'] === "150" && @$this->Video_Info_Asoc['reason'] === "Видео удалено пользователем, который его добавил.")
-		{
-			$this->ERROR_HANDLER( "VIDEO_TYPE__DELETED" , "Check_Video_Response_Status: Видео было удалено");
-		}
-		
-		if( @$this->Video_Info_Asoc['status'] === "fail" && @$this->Video_Info_Asoc['errorcode'] === "150" && @$this->Video_Info_Asoc['reason'] === "Это видео недоступно.")
-		{
-			$this->ERROR_HANDLER( "VIDEO_TYPE__NO_ACCESS" , "Check_Video_Response_Status: Видео с ограниченным доступом");
-		}
-		
-		
-		
-		# Именно после всех других if  (т к в некоторых тоже может стоять "ok")
-		if( $this->Video_Info_Asoc['status'] === "ok" )
-		{
-
-			$this->Video_Status_Is_OK = "Video Status Is OK";
-			return;
-		}
-		
-		
-		$this->ERROR_HANDLER( "VIDEO_TYPE__SOMETHING_NEW" , "Check_Video_Response_Status: Ни один if не сработал(Сорее всего это новый тип статуса(надо дописать))");
 		
 		
 	}
 	
 	
+	#############################################################
 	
+
+	
+	
+	
+
 	
 	# Трансляция=проверить когда кончится   https://www.youtube.com/watch?v=0whQO3r0wwA
 
@@ -481,8 +288,21 @@ class UNIV_PHP_YOUTUBE
 	
 		
 	function Player_Response_Convert_JSON_To_Asoc()
-	{
-		$this->Player_Response_JSON_Full = json_decode($this->Video_Info_Asoc['player_response'], true);
+	{	
+		
+		$buf_only_player_response = $this->Video_Info_Asoc['player_response'];
+		
+		//echo $buf_only_player_response;
+		//exit;
+		
+		
+		$this->Player_Response_JSON_Full = json_decode($buf_only_player_response , true);
+		unset($this->Video_Info_Asoc);
+		
+		
+		//echo $this->Player_Response_JSON_Full;
+		
+		
 	}
 	
 	
@@ -494,20 +314,22 @@ class UNIV_PHP_YOUTUBE
 	#############################################################
 	
 	
-	#  ВЫРЕЗАТЬ!!!
 	# Убирает лишние ключи
-	function Player_Response_JSON_Erase()
+	function Player_Response_JSON_Erase( )
 	{
-		# Копипаст массива и обрезка копии(Для удобства отладки)
-		$this->Player_Response_JSON_Erased = $this->Player_Response_JSON_Full;
-		
-		unset( $this->Player_Response_JSON_Erased['playbackTracking'] );
-		unset( $this->Player_Response_JSON_Erased['videoDetails']['keywords'] );
-		unset( $this->Player_Response_JSON_Erased['playerConfig'] );
-		unset( $this->Player_Response_JSON_Erased['storyboards'] );
-		unset( $this->Player_Response_JSON_Erased['attestation'] );
-		unset( $this->Player_Response_JSON_Erased['messages'] );
-		unset( $this->Player_Response_JSON_Erased['adSafetyReason'] );
+
+		unset( $this->Player_Response_JSON_Full['playbackTracking'] );
+		unset( $this->Player_Response_JSON_Full['videoDetails']['keywords'] );
+		unset( $this->Player_Response_JSON_Full['playerConfig'] );
+		unset( $this->Player_Response_JSON_Full['storyboards'] );
+		unset( $this->Player_Response_JSON_Full['attestation'] );
+		unset( $this->Player_Response_JSON_Full['messages'] );
+		unset( $this->Player_Response_JSON_Full['adSafetyReason'] );
+		unset( $this->Player_Response_JSON_Full['captions'] );
+		unset( $this->Player_Response_JSON_Full['responseContext'] );
+		unset( $this->Player_Response_JSON_Full['endscreen'] );
+		unset( $this->Player_Response_JSON_Full['annotations'] );
+		unset( $this->Player_Response_JSON_Full['microformat']['playerMicroformatRenderer']['availableCountries'] );
 		
 	}
 
@@ -515,18 +337,27 @@ class UNIV_PHP_YOUTUBE
 		
 	#############################################################
 	
-	# Решил не проверять ибо все ошибки отловлены в Check_Video_Response_Status
+	
 	function Check_Playability_Status()
 	{
 		
 		### Тут условия и если косяк, то вывод текста ошибки и exit
 		
-		$this->Playability_Status = $this->Player_Response_JSON['playabilityStatus']['status'];
+		$this->Playability_Status = $this->Player_Response_JSON_Full['playabilityStatus']['status'];
+		
+		
 		
 		if( $this->Playability_Status != "OK" )
 		{
-			echo "<br>  Playability_Status != OK => exit : " . $this->Playability_Status;
-			exit;
+			echo "<br>  Playability_Status != OK";
+			echo "<br>  Playability_Status : " . $this->Playability_Status;
+			echo "<br>  reason : " . $this->Player_Response_JSON_Full['playabilityStatus']['reason'];
+			
+			echo "<br> Тут будет переброс на функцию с выводом красивых ошибок";
+			
+			exit("<br>Exit");
+			
+			
 		}
 		
 		# "OK"
@@ -542,25 +373,27 @@ class UNIV_PHP_YOUTUBE
 		$this->FIN_Video_Info_Asoc['videoId']       = $this->Player_Response_JSON_Full['videoDetails']['videoId'];
 		$this->FIN_Video_Info_Asoc['title']         = $this->Player_Response_JSON_Full['videoDetails']['title'];
 		$this->FIN_Video_Info_Asoc['lengthSeconds'] = $this->Player_Response_JSON_Full['videoDetails']['lengthSeconds'];
+		$this->FIN_Video_Info_Asoc['channelId']     = $this->Player_Response_JSON_Full['videoDetails']['channelId'];
+		$this->FIN_Video_Info_Asoc['shortDescription'] = $this->Player_Response_JSON_Full['videoDetails']['shortDescription'];
 		
 		$this->FIN_Video_Info_Asoc['viewCount']     = $this->Player_Response_JSON_Full['videoDetails']['viewCount'];
 		$this->FIN_Video_Info_Asoc['author']        = $this->Player_Response_JSON_Full['videoDetails']['author'];
-		#$this->FIN_Video_Info_Asoc[''] = $this->Player_Response_JSON_Full['videoDetails'][''];
-		#$this->FIN_Video_Info_Asoc[''] = $this->Player_Response_JSON_Full['videoDetails'][''];
-		#$this->FIN_Video_Info_Asoc[''] = $this->Player_Response_JSON_Full[''][''];
-		#$this->FIN_Video_Info_Asoc[''] = $this->Player_Response_JSON_Full[''][''];
+		$this->FIN_Video_Info_Asoc['ownerProfileUrl'] = $this->Player_Response_JSON_Full['microformat']['playerMicroformatRenderer']['ownerProfileUrl'];
+		$this->FIN_Video_Info_Asoc['category']      = $this->Player_Response_JSON_Full['microformat']['playerMicroformatRenderer']['category'];
+		$this->FIN_Video_Info_Asoc['publishDate']   = $this->Player_Response_JSON_Full['microformat']['playerMicroformatRenderer']['publishDate'];
 
+		//SF::PRINTER($this->FIN_Video_Info_Asoc); exit;
 	}
 	
 	
-	function Fill_FIN_Video_Thimbnails_Url_Arr()
+	function Fill_FIN_Video_Thimbnails_Arr( )
 	{
-		# Сделать черех форич
-		$this->FIN_Video_Thimbnails_Url_Arr[] = $this->Player_Response_JSON_Full['videoDetails']['thumbnail']['thumbnails'][0]['url'];
-		$this->FIN_Video_Thimbnails_Url_Arr[] = $this->Player_Response_JSON_Full['videoDetails']['thumbnail']['thumbnails'][1]['url'];
-		$this->FIN_Video_Thimbnails_Url_Arr[] = $this->Player_Response_JSON_Full['videoDetails']['thumbnail']['thumbnails'][2]['url'];
-		$this->FIN_Video_Thimbnails_Url_Arr[] = $this->Player_Response_JSON_Full['videoDetails']['thumbnail']['thumbnails'][3]['url'];
+		$this->FIN_Video_Thimbnails_Arr   = $this->Player_Response_JSON_Full['videoDetails']['thumbnail']['thumbnails'];
+		
+		foreach( $this->Player_Response_JSON_Full['microformat']['playerMicroformatRenderer']['thumbnail']['thumbnails'] as $one_arr)
+			$this->FIN_Video_Thimbnails_Arr []= $one_arr;
 	
+		//SF::PRINTER($this->FIN_Video_Thimbnails_Arr); exit;
 	}
 	
 	function Fill_FIN_Video_Itag_Info_Asoc_FULL()
@@ -631,6 +464,7 @@ class UNIV_PHP_YOUTUBE
 						<tr >
 							<td><strong>ITAG</strong></td>
 							<td><strong>mimeType</strong></td>
+							<td><strong>quality</strong></td>
 							<td><strong>qualityLabel</strong></td>
 							<td><strong>Размер</strong></td>
 							<td><strong>contentLength</strong></td>
@@ -643,25 +477,24 @@ class UNIV_PHP_YOUTUBE
 						
 						
 		#foreach($this->FIN_Video_Itag_Info_Asoc_Audio as $One_Set)
-		foreach($this->FIN_Video_Itag_Info_Asoc_Video_MP4 as $One_Set)
+		#foreach($this->FIN_Video_Itag_Info_Asoc_Video_MP4 as $One_Set)
+		foreach($this->FIN_Video_Itag_Info_Asoc_FULL as $One_Set)
 		{
 			echo "<tr>";
 			
 			echo 	"<td>". $One_Set['itag'] ."</td>";
 			echo 	"<td>". $One_Set['mimeType'] ."</td>";
+			echo 	"<td>". $One_Set['quality'] ."</td>";
 			echo 	"<td>". $One_Set['qualityLabel'] ."</td>";
 			echo 	"<td>". $One_Set['width'] . "x" . $One_Set['height'] ."</td>";
 			echo 	"<td>". (int)($One_Set['contentLength']/1024/1024) ."Мб</td>";
 			echo 	"<td>". 
 							#"<a download=\"". $One_Set['itag'] ."\" target=\"_blank\" href=\"". $One_Set['url'] ."\"> 	<span> Скачать </span>	</a>"
-							"<a 
-								download   
-								onclick=\"return confirm('Скачать?');\"
-								href=\"". $One_Set['url'] ."\"
-								>
+							//	onclick=\"return confirm('Скачать?');\"
+							'<a href="'.$One_Set['url'].'" download>
 								
 								<span> Скачать </span>	
-							</a>"
+							</a>'
 					."</td>";
 
 
