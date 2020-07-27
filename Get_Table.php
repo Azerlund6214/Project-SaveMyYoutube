@@ -70,9 +70,7 @@
 	
 	
 	######################
-	//$UN_YOUTUBE -> Check_Video_Response_Status(  );  # Дальше  либо exit в ERROR_HANDLER
-	//if( isset($_POST["cb6_Echo_Video_Status_Is_OK"]) )
-	//	SF::PRINTER($UN_YOUTUBE->Video_Status_Is_OK , "Video_Status_Is_OK = Видео можно смотреть");
+
 	
 	//echo count($UN_YOUTUBE->Video_Info_Asoc);
 	

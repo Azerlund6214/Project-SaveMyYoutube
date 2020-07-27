@@ -5,8 +5,11 @@
 # Записывать в переменную "UN_YOUTUBE"
 
 
-### Сделать методы GET SET
+
 ### Класс не нацелен на обеспечение инкапсуляции полей и методов
+
+# При введении ссылки на закончившуюся прямую трансляцию он её не отловит и будет ошибка
+
 
 
 class UNIV_PHP_YOUTUBE
@@ -295,12 +298,27 @@ class UNIV_PHP_YOUTUBE
 		//echo $buf_only_player_response;
 		//exit;
 		
-		
+		# Если приходит JSON со сломанной структурой, то его не удастся распарсить.
 		$this->Player_Response_JSON_Full = json_decode($buf_only_player_response , true);
+		
+		if ( $this->Player_Response_JSON_Full  == "" )
+		{
+			echo "Youtube прислал поломанный JSON, который нельзя разобрать. Скорее всего это видео удалено или с ограниченным доступом.";
+			
+			//Полный кусок = "playabilityStatus":{"status":"LOGIN_REQUIRED","messages":["Это видео с ограниченным доступом. Войдите в аккаунт."],"errorScreen":{"playerErrorMessageRenderer":{"subreason":{"simpleText":"Чтобы посмотреть это видео, войдите в аккаунт"},"reason":{"simpleText":"Видео с ограниченным доступом"}
+			if( strpos( $buf_only_player_response , "LOGIN_REQUIRED" ) )
+				echo '<br>Проверили - "status":"LOGIN_REQUIRED","messages":["Это видео с ограниченным доступом. Войдите в аккаунт."]';
+			
+			
+			
+			exit("Exit");
+		}
+		
+		//echo "<br>JSON нормальный";
+		//echo $this->Player_Response_JSON_Full;
+		
 		unset($this->Video_Info_Asoc);
 		
-		
-		//echo $this->Player_Response_JSON_Full;
 		
 		
 	}
@@ -345,7 +363,6 @@ class UNIV_PHP_YOUTUBE
 		
 		$this->Playability_Status = $this->Player_Response_JSON_Full['playabilityStatus']['status'];
 		
-				
 		
 		if( $this->Playability_Status != "OK" )
 		{
@@ -354,21 +371,29 @@ class UNIV_PHP_YOUTUBE
 			echo "<br>  reason : " . $this->Player_Response_JSON_Full['playabilityStatus']['reason'];
 			
 			echo "<br> Тут будет переброс на функцию с выводом красивых ошибок";
-			
 			exit("<br>Exit");
-			
-			
 		}
 		
 		
-		if( @$this->Player_Response_JSON_Full['playabilityStatus']['liveStreamability'] )
+		# Выявление идущего или закончившегося стрима
+		if( @$this->Player_Response_JSON_Full['videoDetails']['isLiveContent'] == 1 )
 		{
-			echo "<br>  Playability_Status => liveStreamability   === Это стрим";
-		
+			
+			//if( @$this->Player_Response_JSON_Full['playabilityStatus']['liveStreamability'] )  Работает
+			if ( @$this->Player_Response_JSON_Full['videoDetails']['isLive'] == 1 )
+			{
+				echo "<br>Это идущий стрим.";
+				echo "<br> Тут будет переброс на функцию с выводом красивых ошибок";
+				exit ("Exit");
+			}
+			
+			echo "<br>Это запись уже закончившегося стрима.";
 			echo "<br> Тут будет переброс на функцию с выводом красивых ошибок";
-			exit("<br>Exit");
-		
+			exit ("Exit");
+			
 		}
+		
+		
 		
 		# "OK"
 	
