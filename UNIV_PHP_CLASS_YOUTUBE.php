@@ -345,7 +345,7 @@ class UNIV_PHP_YOUTUBE
 		
 		$this->Playability_Status = $this->Player_Response_JSON_Full['playabilityStatus']['status'];
 		
-		
+				
 		
 		if( $this->Playability_Status != "OK" )
 		{
@@ -358,6 +358,16 @@ class UNIV_PHP_YOUTUBE
 			exit("<br>Exit");
 			
 			
+		}
+		
+		
+		if( @$this->Player_Response_JSON_Full['playabilityStatus']['liveStreamability'] )
+		{
+			echo "<br>  Playability_Status => liveStreamability   === Это стрим";
+		
+			echo "<br> Тут будет переброс на функцию с выводом красивых ошибок";
+			exit("<br>Exit");
+		
 		}
 		
 		# "OK"
