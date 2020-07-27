@@ -529,8 +529,7 @@ class UNIV_PHP_YOUTUBE
 			echo 	"<td>". 
 							#"<a download=\"". $One_Set['itag'] ."\" target=\"_blank\" href=\"". $One_Set['url'] ."\"> 	<span> Скачать </span>	</a>"
 							//	onclick=\"return confirm('Скачать?');\"
-							'<a href="'.$One_Set['url'].'" download>
-								
+							'<a href="'.$One_Set['url'].'" target="_blank" download>
 								<span> Скачать </span>	
 							</a>'
 					."</td>";
