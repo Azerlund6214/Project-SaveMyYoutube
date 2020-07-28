@@ -1,19 +1,85 @@
 <?php
 
 
+
+	# РўСЂР°РЅСЃР»СЏС†РёСЏ=РїСЂРѕРІРµСЂРёС‚СЊ РєРѕРіРґР° РєРѕРЅС‡РёС‚СЃСЏ   https://www.youtube.com/watch?v=0whQO3r0wwA
+
+	
+	#https://www.youtube.com/channel/UCUIaaPF0KlrED0DfQYwyJYA
+	#https://www.youtube.com/playlist?list=PLms4zBSLSqcIhLKJfKILSGAr-oV1C_pb4
+	
+	#РЈРґР°Р»РµРЅРЅРѕРµ   https://www.youtube.com/watch?v=w4zVncsZ1Vo&list=PL7s-aH85QwI8PcutmFgFMZNGSWeWiFiR2&index=22
+	#РћРіСЂР°РЅРёС‡ РґРѕСЃС‚ https://www.youtube.com/watch?v=z9rsm6zPcXw&list=PLy8tICjJjlRjUMSRo243O4lA_gHa3MJkO&index=6
+	
+	
+	#livestream = 1 Сѓ СЃС‚СЂРёРјР°   Сѓ РІРёРґРµРѕ РїР°СЂР°РјРµС‚СЂР° РЅРµС‚
+	
+	#status = UNPLAYABLE  С…Р· РѕС‚РєСѓРґР° РІР·СЏР»    С‚РѕР»СЊРєРѕ РІ player_response
+	#status = ok
+	#status = fail   Сѓ СѓРґР°Р»РµРЅРЅРѕРіРѕ  player_response[status]=ERROR   PR[reason]=Р’РёРґРµРѕ СѓРґР°Р»РµРЅРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј, РєРѕС‚РѕСЂС‹Р№ РµРіРѕ РґРѕР±Р°РІРёР».
+	#status = fail   Сѓ РїР»Р°С‚РЅРѕРіРѕ  player_response[status]=UNPLAYABLE   PR[reason]=Р­С‚Рѕ РІРёРґРµРѕ РЅРµРґРѕСЃС‚СѓРїРЅРѕ.
+	#status = fail   Сѓ РѕРіСЂР°РЅРёС‡  player_response[status]=ERROR   PR[reason]=Р­С‚Рѕ РІРёРґРµРѕ РЅРµРґРѕСЃС‚СѓРїРЅРѕ.
+	#status = fail  РЈ РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРіРѕ  + [errorcode] => 2
+	
+	#pltype = contentlive  Сѓ СЃС‚СЂРёРјР°     РµСЃС‚СЊ РІ player_response
+	#pltype = contentugc   Сѓ РІРёРґРѕСЃР°     РµСЃС‚СЊ РІ player_response
+	#pltype - РЈ  СѓРґР°Р» Рё РѕРіСЂР°РЅРёС‡  РµРіРѕ РЅРµС‚
+
+
+
+
+	/*
+	function Fill_FIN_Video_Itag_Info_Asoc_VIDEO_MP4( )
+	{
+		foreach($this->FIN_Video_Itag_Info_Asoc_FULL as $Key => $Val)
+		{
+			if( $this->FIN_Video_Itag_Info_Asoc_FULL[$Key]['mimeType'] === "video/mp4" )
+			{	
+				$this->FIN_Video_Itag_Info_Asoc_Video_MP4[$Key] = $Val;			
+			}	
+		}
+	}
+	
+	
+	function Fill_FIN_Video_Itag_Info_Asoc_Audio()
+	{
+		foreach($this->FIN_Video_Itag_Info_Asoc_FULL as $Key => $Val)
+		{
+			if( $this->FIN_Video_Itag_Info_Asoc_FULL[$Key]['mimeType'] === "audio/mp4" )
+			{	
+				$this->FIN_Video_Itag_Info_Asoc_Audio[$Key] = $Val;			
+			}	
+		}
+	}
+	*/
+	/*
+	$YOUTUBE -> Fill_FIN_Video_Itag_Info_Asoc_Video_MP4(  );
+	if( isset($_POST["cb12_Echo_FIN_Video_Itag_Info_Asoc_Video_MP4"]) )
+		SF::PRINTER($YOUTUBE->FIN_Video_Itag_Info_Asoc_Video_MP4 ,"print_r", "FIN_Video_Itag_Info_Asoc_Video_MP4 = Р’РЎРЇ РРЅС„Р° Рѕ С„РѕСЂРјР°С‚Р°С… РІРёРґРµРѕ(РўРѕР»СЊРєРѕ MP4)");
+	
+	$YOUTUBE -> Fill_FIN_Video_Itag_Info_Asoc_Audio(  );
+	if( isset($_POST["cb13_Echo_FIN_Video_Itag_Info_Asoc_Audio"]) )
+		SF::PRINTER($YOUTUBE->FIN_Video_Itag_Info_Asoc_Audio,"print_r" , "FIN_Video_Itag_Info_Asoc_Audio = Р’РЎРЇ РРЅС„Р° Рѕ С„РѕСЂРјР°С‚Р°С… AUDIO");
+	*/
+
+
+
+
+
+
 		public $Valid_Itags = array(
 								#	"5",   # FLV 320 x 240
 								#	"34",  # FLV 640 x 360
 								#	"35",  # FLV 854 x 480
 									
 									
-									"160", # 160p = MP4  256 x 144 # Добавлял сам = есть вес видео
-									"133", # 240p = MP4  426 x 240 # Добавлял сам = есть вес видео
-									"18",  # 360p = MP4  640 x 360                  есть вес видео
-									"134", # 360p = MP4  640 x 360 # Добавлял сам = есть вес видео
-									"135", # 480p = MP4  480 x 854 # Добавлял сам
-									"136", # 720p = MP4 1280 x 720 # Добавлял сам = есть вес видео
-									"22",  # 720p = MP4 1280 x 720    багует размер файла(0мб)              нет веса видео
+									"160", # 160p = MP4  256 x 144 # Р”РѕР±Р°РІР»СЏР» СЃР°Рј = РµСЃС‚СЊ РІРµСЃ РІРёРґРµРѕ
+									"133", # 240p = MP4  426 x 240 # Р”РѕР±Р°РІР»СЏР» СЃР°Рј = РµСЃС‚СЊ РІРµСЃ РІРёРґРµРѕ
+									"18",  # 360p = MP4  640 x 360                  РµСЃС‚СЊ РІРµСЃ РІРёРґРµРѕ
+									"134", # 360p = MP4  640 x 360 # Р”РѕР±Р°РІР»СЏР» СЃР°Рј = РµСЃС‚СЊ РІРµСЃ РІРёРґРµРѕ
+									"135", # 480p = MP4  480 x 854 # Р”РѕР±Р°РІР»СЏР» СЃР°Рј
+									"136", # 720p = MP4 1280 x 720 # Р”РѕР±Р°РІР»СЏР» СЃР°Рј = РµСЃС‚СЊ РІРµСЃ РІРёРґРµРѕ
+									"22",  # 720p = MP4 1280 x 720    Р±Р°РіСѓРµС‚ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°(0РјР±)              РЅРµС‚ РІРµСЃР° РІРёРґРµРѕ
 									"37",  # MP4 1920 x 1080
 									"38",  # MP4 4096 x 1714
 									
@@ -21,24 +87,89 @@
 								#	"44",  # WEBM 854 x 480
 								#	"45",  # WEBM 1280 x 720
 									
-									"140"  # 140 = аудио (только один итаг)
+									"140"  # 140 = Р°СѓРґРёРѕ (С‚РѕР»СЊРєРѕ РѕРґРёРЅ РёС‚Р°Рі)
 								);
 
 
 
-
-	# УБРАТЬ СОВСЕМ
-	# Доделать регулярки
-	# Проверка на strstr(youtube.com/)  ,  один ?   ,  одно =
+								
+								
+								
+	############# РћС‡РµРЅСЊ РєСЂРёРІРѕРµ, СѓР±СЂР°Р» РІСЃРµ РєРѕРјРјРµРЅС‚С‹
+	# Р Р°Р±РѕС‚Р°РµС‚
+	# Р—Р°РїРёСЃСЊ РІ РїРѕР»Рµ РєР»Р°СЃСЃР° РР›Р echo ERROR
+	# РЎРµР№С‡Р°СЃ РµСЃС‚СЊ РўРћР›Р¬РљРћ С‡РµСЂРµР· СЂРµРіСѓР»СЏСЂРєРё
+	function Get_Video_ID( $URL )
+	{
+		# РЈР±СЂР°С‚СЊ Р’РЎР• РїСЂРѕР±РµР»С‹
+		$URL = preg_replace( '/ {1,}/'  ,  ''  , $URL ) ; # Р РѕР±РёС‚
+		
+		
+		
+		
+		/*
+		Р РђР‘РћРўРђР•Рў Р”Р›РЇ:
+		https://www.youtube.com/v/VIDEOID
+		https://www.youtube.com/v/VIDEOID?fs=1&hl=en_US
+		https://www.youtube.com/v/VIDEOID?feature=autoshare&version=3&autohide=1&autoplay=1
+		https://www.youtube.com/?v=VIDEOID
+		https://www.youtube.com/watch?v=VIDEOID
+		https://www.youtube.com/watch?v=VIDEOID&feature=featured
+		https://www.youtu.be/VIDEOID
+		https://www.youtube.com/embed/VIDEOID
+		https://www.youtube.com/ytscreeningroom?v=VIDEOID
+		
+		РќР• Р РђР‘РћРўРђР•Рў Р”Р›РЇ:  (Р­С‚РѕС‚ С„РѕСЂРјР°С‚ СЃСЃС‹Р»РѕРє СѓСЃС‚Р°СЂРµР» => Р®С‚СѓР± РґРµР»Р°РµС‚ СЂРµРґРёСЂРµРєС‚ РЅР° РіР»Р°РІРЅСѓСЋ)
+		https://www.youtube.com/vi/VIDEOID
+		https://www.youtube.com/?vi=VIDEOID
+		https://www.youtube.com/watch?vi=VIDEOID
+		*/
+		
+		# РЎР°Рј РїРµСЂРµРґРµР»С‹РІР°Р»
+		$Pattern = "#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v/)[^&\n]+|(?<=embed/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#";
+		
+		//РўСѓС‚ РєРѕСЃСЏРє - РїСЂРѕРєР°С‚С‹РІР°РµС‚ РґР°Р¶Рµ РІР°СЂРёР°РЅС‚ СЃ С‚СѓРїРѕ "v=VIDEOID"
+		//Р›СѓС‡С€Рµ СЃРґРµР»Р°С‚СЊ РјРЅРѕРіРѕ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅС‹С… РїСЂРѕРІРµСЂРѕРє
+		
+		preg_match( $Pattern , $URL , $Buf_Video_ID );
+		
+		
+		#echo "<br>1111111111=".count($Buf_Video_ID);
+		#echo "<br>1111111111=".$Buf_Video_ID[0];
+		
+		
+		
+		if( count($Buf_Video_ID) === 0 )
+		{
+			$this->ERROR_HANDLER( "NOT_SOLVED_VIDEO_ID" , "Get_Video_ID: РќРµ РЅР°С€РµР» РЅРё РѕРґРЅРѕРіРѕ VIDEO_ID= ". count($Buf_Video_ID) ." => ".$URL );
+		}
+		
+		
+		$this->Video_ID = $Buf_Video_ID[0];
+		
+		return;
+		
+		
+		
+		#parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
+		#echo $my_array_of_vars['v'];  
+		
+	}
+	
+	
+	
+	# РЈР‘Р РђРўР¬ РЎРћР’РЎР•Рњ
+	# Р”РѕРґРµР»Р°С‚СЊ СЂРµРіСѓР»СЏСЂРєРё
+	# РџСЂРѕРІРµСЂРєР° РЅР° strstr(youtube.com/)  ,  РѕРґРёРЅ ?   ,  РѕРґРЅРѕ =
 	function Verify_URL( )
 	{
-		# Формат ТОЛЬКО  http://www.youtube.com/watch?v=JYATEN_TzhA
-		# Обязательно .../watch? ... & v=123 & ...
+		# Р¤РѕСЂРјР°С‚ РўРћР›Р¬РљРћ  http://www.youtube.com/watch?v=JYATEN_TzhA
+		# РћР±СЏР·Р°С‚РµР»СЊРЅРѕ .../watch? ... & v=123 & ...
 	
 	
-		# Проверка на очень длинную строку(вдруг специально вбросят)
+		# РџСЂРѕРІРµСЂРєР° РЅР° РѕС‡РµРЅСЊ РґР»РёРЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ(РІРґСЂСѓРі СЃРїРµС†РёР°Р»СЊРЅРѕ РІР±СЂРѕСЃСЏС‚)
 		
-		# Проверить strstr(youtube.com/)
+		# РџСЂРѕРІРµСЂРёС‚СЊ strstr(youtube.com/)
 		
 		
 		
@@ -53,12 +184,12 @@
 		#$reg1= "(?:youtube(?:-nocookie)?\\.com\\/(?:[^\\/\\n\\s]+\\/\\S+\\/|(?:v|e(?:mbed)?)\\/|\\S*?[?&]v=)|youtu\\.be\\/)([a-zA-Z0-9_-]{11})";
 		#$reg1 = "/(youtu\.be\/|youtube\.com\/(watch\?(.*&)?v=|(embed|v)\/))([^\?&\"'>]+)/";
 		
-		#прошел $reg1 = "/(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})\W/";
+		#РїСЂРѕС€РµР» $reg1 = "/(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})\W/";
 		
-		//ошибка $reg1 = "/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*)";
+		//РѕС€РёР±РєР° $reg1 = "/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*)";
 		
-		/* ошибка $reg1 = "v=([a-zA-Z0-9\_\-]+)&?")[1]"; */
-		/* ошибка $reg1 = "list=([a-zA-Z0-9\-\_]+)&?"; */
+		/* РѕС€РёР±РєР° $reg1 = "v=([a-zA-Z0-9\_\-]+)&?")[1]"; */
+		/* РѕС€РёР±РєР° $reg1 = "list=([a-zA-Z0-9\-\_]+)&?"; */
 		
 
 		///* 
@@ -100,20 +231,20 @@
 		
 		
 		
-		$URL_Parametres_ALL = explode( "?" , $user_request_url ); # [0]=не нужное  [1]=ВСЕ параметры ссылки
+		$URL_Parametres_ALL = explode( "?" , $user_request_url ); # [0]=РЅРµ РЅСѓР¶РЅРѕРµ  [1]=Р’РЎР• РїР°СЂР°РјРµС‚СЂС‹ СЃСЃС‹Р»РєРё
 	
 	
-		# Проверка есть ли ? и сколько их (ифы внизу)
+		# РџСЂРѕРІРµСЂРєР° РµСЃС‚СЊ Р»Рё ? Рё СЃРєРѕР»СЊРєРѕ РёС… (РёС„С‹ РІРЅРёР·Сѓ)
 		if( count($URL_Parametres_ALL) === 1 )
 		{
-			echo "<br>Нецелевой формат URL (Нет ? => нет параметров) = $user_request_url";
+			echo "<br>РќРµС†РµР»РµРІРѕР№ С„РѕСЂРјР°С‚ URL (РќРµС‚ ? => РЅРµС‚ РїР°СЂР°РјРµС‚СЂРѕРІ) = $user_request_url";
 			exit;
 		}
 		
-		# Проверка есть ли = и сколько их
+		# РџСЂРѕРІРµСЂРєР° РµСЃС‚СЊ Р»Рё = Рё СЃРєРѕР»СЊРєРѕ РёС…
 		if( count($URL_Parametres_ALL) <= 1 )
 		{
-			echo "<br>Непровильный формат URL (Несколько ?) = $user_request_url";
+			echo "<br>РќРµРїСЂРѕРІРёР»СЊРЅС‹Р№ С„РѕСЂРјР°С‚ URL (РќРµСЃРєРѕР»СЊРєРѕ ?) = $user_request_url";
 			exit;
 		}
 		
@@ -122,32 +253,32 @@
 		
 		
 		
-		# Делаем хттп запрос 200
+		# Р”РµР»Р°РµРј С…С‚С‚Рї Р·Р°РїСЂРѕСЃ 200
 	
 	}
 
 
-### РАЗОБРАТЬСЯ !!!!!!
+### Р РђР—РћР‘Р РђРўР¬РЎРЇ !!!!!!
 	function Convert_Video_Info_To_Asoc()
 	{
 		
 		set_error_handler(
 							function ($severity, $message, $file, $line) 
 							{				
-								$this->ERROR_HANDLER( "PARSE_STR__MORE_THAN_1000_VARS" , "Convert_Video_Info_To_Asoc: Ошибка=Больше 1000 переменных в parse_str");	
+								$this->ERROR_HANDLER( "PARSE_STR__MORE_THAN_1000_VARS" , "Convert_Video_Info_To_Asoc: РћС€РёР±РєР°=Р‘РѕР»СЊС€Рµ 1000 РїРµСЂРµРјРµРЅРЅС‹С… РІ parse_str");	
 								#throw new \ErrorException($message, $severity, $severity, $file, $line);	
 							}
 						 );
 		/*
-			Все упадет если сткрока с JSON инфой окажется на 1000+ позиции
+			Р’СЃРµ СѓРїР°РґРµС‚ РµСЃР»Рё СЃС‚РєСЂРѕРєР° СЃ JSON РёРЅС„РѕР№ РѕРєР°Р¶РµС‚СЃСЏ РЅР° 1000+ РїРѕР·РёС†РёРё
 			
 			Warning: parse_str(): Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini
 			max_input_vars
 			
 			http://php.net/manual/ru/info.configuration.php
-			Если входных переменных больше, чем задано директивой, выбрасывается предупреждение E_WARNING, а все последующие переменные в запросе игнорируются.
+			Р•СЃР»Рё РІС…РѕРґРЅС‹С… РїРµСЂРµРјРµРЅРЅС‹С… Р±РѕР»СЊС€Рµ, С‡РµРј Р·Р°РґР°РЅРѕ РґРёСЂРµРєС‚РёРІРѕР№, РІС‹Р±СЂР°СЃС‹РІР°РµС‚СЃСЏ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ E_WARNING, Р° РІСЃРµ РїРѕСЃР»РµРґСѓСЋС‰РёРµ РїРµСЂРµРјРµРЅРЅС‹Рµ РІ Р·Р°РїСЂРѕСЃРµ РёРіРЅРѕСЂРёСЂСѓСЋС‚СЃСЏ.
 		*/
-		# Тут может выскачить Warning => Тогда дальнейшая логика проги работать не будет(50на50,как повезет)
+		# РўСѓС‚ РјРѕР¶РµС‚ РІС‹СЃРєР°С‡РёС‚СЊ Warning => РўРѕРіРґР° РґР°Р»СЊРЅРµР№С€Р°СЏ Р»РѕРіРёРєР° РїСЂРѕРіРё СЂР°Р±РѕС‚Р°С‚СЊ РЅРµ Р±СѓРґРµС‚(50РЅР°50,РєР°Рє РїРѕРІРµР·РµС‚)
 		parse_str( $this->Video_Info , $this->Video_Info_Asoc );
 		
 		echo count($this->Video_Info_Asoc);
@@ -157,7 +288,7 @@
 		
 		return;
 		
-		# Попытка разбить массив на 2 части => не прокатило
+		# РџРѕРїС‹С‚РєР° СЂР°Р·Р±РёС‚СЊ РјР°СЃСЃРёРІ РЅР° 2 С‡Р°СЃС‚Рё => РЅРµ РїСЂРѕРєР°С‚РёР»Рѕ
 		$Buf = array_chunk($this->Video_Info, 2, TRUE);
 		
 		$Buf_Asoc_1 = array();
@@ -172,7 +303,7 @@
 		
 		# unset $this->Video_Info
 		
-		# Проверка   что если элементов больше 1000 (будет warning)
+		# РџСЂРѕРІРµСЂРєР°   С‡С‚Рѕ РµСЃР»Рё СЌР»РµРјРµРЅС‚РѕРІ Р±РѕР»СЊС€Рµ 1000 (Р±СѓРґРµС‚ warning)
 	}
 
 
@@ -184,49 +315,49 @@
 		
 		
 		
-		# Именно после всех других if  (т к в некоторых тоже может стоять "ok")
+		# РРјРµРЅРЅРѕ РїРѕСЃР»Рµ РІСЃРµС… РґСЂСѓРіРёС… if  (С‚ Рє РІ РЅРµРєРѕС‚РѕСЂС‹С… С‚РѕР¶Рµ РјРѕР¶РµС‚ СЃС‚РѕСЏС‚СЊ "ok")
 		if( $this->Video_Info_Asoc['status'] != "ok" )
 		{
 			
-			exit("Статус не ок");
+			exit("РЎС‚Р°С‚СѓСЃ РЅРµ РѕРє");
 		}
 		
 		$this->Video_Status_Is_OK = "Video Status Is OK";
 		
 		
 		
-		# NOTICE: Такие муторные if, чтобы не приходилось прямо тут парсить JSON(в нем есть уникальные коды ошибок и типов видео)
+		# NOTICE: РўР°РєРёРµ РјСѓС‚РѕСЂРЅС‹Рµ if, С‡С‚РѕР±С‹ РЅРµ РїСЂРёС…РѕРґРёР»РѕСЃСЊ РїСЂСЏРјРѕ С‚СѓС‚ РїР°СЂСЃРёС‚СЊ JSON(РІ РЅРµРј РµСЃС‚СЊ СѓРЅРёРєР°Р»СЊРЅС‹Рµ РєРѕРґС‹ РѕС€РёР±РѕРє Рё С‚РёРїРѕРІ РІРёРґРµРѕ)
 		
-		# НЕ Работает
+		# РќР• Р Р°Р±РѕС‚Р°РµС‚
 		if( @$this->Video_Info_Asoc['livestream'] === "1" )
 		{		
-			$this->ERROR_HANDLER( "VIDEO_TYPE__LIVESTREAM" , "Check_Video_Response_Status: Ссылка ведет на прямую трнсляцию");	
+			$this->ERROR_HANDLER( "VIDEO_TYPE__LIVESTREAM" , "Check_Video_Response_Status: РЎСЃС‹Р»РєР° РІРµРґРµС‚ РЅР° РїСЂСЏРјСѓСЋ С‚СЂРЅСЃР»СЏС†РёСЋ");	
 		}
 		
-		# Работает
-		# Можно оставить только последенее условие
-		if( @$this->Video_Info_Asoc['status'] === "fail" && @$this->Video_Info_Asoc['errorcode'] === "150" && strstr(@$this->Video_Info_Asoc['reason'] , "По требованию владельца это видео не воспроизводится на других сайтах."))
+		# Р Р°Р±РѕС‚Р°РµС‚
+		# РњРѕР¶РЅРѕ РѕСЃС‚Р°РІРёС‚СЊ С‚РѕР»СЊРєРѕ РїРѕСЃР»РµРґРµРЅРµРµ СѓСЃР»РѕРІРёРµ
+		if( @$this->Video_Info_Asoc['status'] === "fail" && @$this->Video_Info_Asoc['errorcode'] === "150" && strstr(@$this->Video_Info_Asoc['reason'] , "РџРѕ С‚СЂРµР±РѕРІР°РЅРёСЋ РІР»Р°РґРµР»СЊС†Р° СЌС‚Рѕ РІРёРґРµРѕ РЅРµ РІРѕСЃРїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РЅР° РґСЂСѓРіРёС… СЃР°Р№С‚Р°С…."))
 		{
-			$this->ERROR_HANDLER( "VIDEO_TYPE__FORBIDDEN_TO_WATCH" , "Check_Video_Response_Status: Можно смотреть только на Youtube");
-			# В player_response есть рабочая ссылка(походу можно обойти запрет)
+			$this->ERROR_HANDLER( "VIDEO_TYPE__FORBIDDEN_TO_WATCH" , "Check_Video_Response_Status: РњРѕР¶РЅРѕ СЃРјРѕС‚СЂРµС‚СЊ С‚РѕР»СЊРєРѕ РЅР° Youtube");
+			# Р’ player_response РµСЃС‚СЊ СЂР°Р±РѕС‡Р°СЏ СЃСЃС‹Р»РєР°(РїРѕС…РѕРґСѓ РјРѕР¶РЅРѕ РѕР±РѕР№С‚Рё Р·Р°РїСЂРµС‚)
 		}
 		
-		# Работает
+		# Р Р°Р±РѕС‚Р°РµС‚
 		if( @$this->Video_Info_Asoc['status'] === "fail" && @$this->Video_Info_Asoc['errorcode'] === "2" )
 		{
-			$this->ERROR_HANDLER( "VIDEO_TYPE__NOT_EXIST" , "Check_Video_Response_Status: Видео не существует(Неверная ссылка)");
+			$this->ERROR_HANDLER( "VIDEO_TYPE__NOT_EXIST" , "Check_Video_Response_Status: Р’РёРґРµРѕ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚(РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°)");
 		}
 		
-		# Работает
-		# Можно оставить только последенее условие
-		if( @$this->Video_Info_Asoc['status'] === "fail" && @$this->Video_Info_Asoc['errorcode'] === "150" && @$this->Video_Info_Asoc['reason'] === "Видео удалено пользователем, который его добавил.")
+		# Р Р°Р±РѕС‚Р°РµС‚
+		# РњРѕР¶РЅРѕ РѕСЃС‚Р°РІРёС‚СЊ С‚РѕР»СЊРєРѕ РїРѕСЃР»РµРґРµРЅРµРµ СѓСЃР»РѕРІРёРµ
+		if( @$this->Video_Info_Asoc['status'] === "fail" && @$this->Video_Info_Asoc['errorcode'] === "150" && @$this->Video_Info_Asoc['reason'] === "Р’РёРґРµРѕ СѓРґР°Р»РµРЅРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј, РєРѕС‚РѕСЂС‹Р№ РµРіРѕ РґРѕР±Р°РІРёР».")
 		{
-			$this->ERROR_HANDLER( "VIDEO_TYPE__DELETED" , "Check_Video_Response_Status: Видео было удалено");
+			$this->ERROR_HANDLER( "VIDEO_TYPE__DELETED" , "Check_Video_Response_Status: Р’РёРґРµРѕ Р±С‹Р»Рѕ СѓРґР°Р»РµРЅРѕ");
 		}
 		
-		if( @$this->Video_Info_Asoc['status'] === "fail" && @$this->Video_Info_Asoc['errorcode'] === "150" && @$this->Video_Info_Asoc['reason'] === "Это видео недоступно.")
+		if( @$this->Video_Info_Asoc['status'] === "fail" && @$this->Video_Info_Asoc['errorcode'] === "150" && @$this->Video_Info_Asoc['reason'] === "Р­С‚Рѕ РІРёРґРµРѕ РЅРµРґРѕСЃС‚СѓРїРЅРѕ.")
 		{
-			$this->ERROR_HANDLER( "VIDEO_TYPE__NO_ACCESS" , "Check_Video_Response_Status: Видео с ограниченным доступом");
+			$this->ERROR_HANDLER( "VIDEO_TYPE__NO_ACCESS" , "Check_Video_Response_Status: Р’РёРґРµРѕ СЃ РѕРіСЂР°РЅРёС‡РµРЅРЅС‹Рј РґРѕСЃС‚СѓРїРѕРј");
 		}
 		
 		
@@ -234,7 +365,7 @@
 
 		
 		
-		$this->ERROR_HANDLER( "VIDEO_TYPE__SOMETHING_NEW" , "Check_Video_Response_Status: Ни один if не сработал(Сорее всего это новый тип статуса(надо дописать))");
+		$this->ERROR_HANDLER( "VIDEO_TYPE__SOMETHING_NEW" , "Check_Video_Response_Status: РќРё РѕРґРёРЅ if РЅРµ СЃСЂР°Р±РѕС‚Р°Р»(РЎРѕСЂРµРµ РІСЃРµРіРѕ СЌС‚Рѕ РЅРѕРІС‹Р№ С‚РёРї СЃС‚Р°С‚СѓСЃР°(РЅР°РґРѕ РґРѕРїРёСЃР°С‚СЊ))");
 		
 		
 	}

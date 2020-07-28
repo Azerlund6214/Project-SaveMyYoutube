@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 	require_once "SF_CLASS.php";
 	
@@ -17,8 +17,8 @@
 	###################### Начало
 	
 	$YOUTUBE -> Get_Video_ID( $user_request_url );
-	if( isset($_POST["cb4_Echo_Video_ID"]) )
-		SF::PRINTER($YOUTUBE->Video_ID , "print_r" , "Итоговый Video_ID");
+	
+	if( isset($_POST["cb4_Echo_Video_ID"]) ) SF::PRINTER($YOUTUBE->Video_ID , "print_r" , "Итоговый Video_ID");
 	
 	######################
 	
@@ -60,15 +60,7 @@
 	
 	######################
 	
-	/*
-	$YOUTUBE -> Fill_FIN_Video_Itag_Info_Asoc_Video_MP4(  );
-	if( isset($_POST["cb12_Echo_FIN_Video_Itag_Info_Asoc_Video_MP4"]) )
-		SF::PRINTER($YOUTUBE->FIN_Video_Itag_Info_Asoc_Video_MP4 ,"print_r", "FIN_Video_Itag_Info_Asoc_Video_MP4 = ВСЯ Инфа о форматах видео(Только MP4)");
-	
-	$YOUTUBE -> Fill_FIN_Video_Itag_Info_Asoc_Audio(  );
-	if( isset($_POST["cb13_Echo_FIN_Video_Itag_Info_Asoc_Audio"]) )
-		SF::PRINTER($YOUTUBE->FIN_Video_Itag_Info_Asoc_Audio,"print_r" , "FIN_Video_Itag_Info_Asoc_Audio = ВСЯ Инфа о форматах AUDIO");
-	*/
+
 	
 	######################	
 	
