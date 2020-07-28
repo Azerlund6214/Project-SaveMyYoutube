@@ -297,6 +297,9 @@ class YouTube
 	{
 		$this->FIN_Video_Thimbnails_Arr   =  $this->Player_Response_JSON_Full['videoDetails']['thumbnail']['thumbnails'];
 		
+		# Убираем последний эскиз тк он дублируется с нижним, но при этом у него не правильно выставлено разрешение
+		unset( $this->FIN_Video_Thimbnails_Arr[ count($this->FIN_Video_Thimbnails_Arr)-1 ] );
+		
 		foreach( $this->Player_Response_JSON_Full['microformat']['playerMicroformatRenderer']['thumbnail']['thumbnails'] as $one_arr)
 			$this->FIN_Video_Thimbnails_Arr []= $one_arr;
 	}
