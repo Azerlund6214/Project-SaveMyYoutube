@@ -1,14 +1,6 @@
-﻿<?php #261118 #271118 #281118
-
-	
+﻿<?php
 
 # Записывать в переменную "UN_YOUTUBE"
-
-
-
-### Класс не нацелен на обеспечение инкапсуляции полей и методов
-
-# При введении ссылки на закончившуюся прямую трансляцию он её не отловит и будет ошибка
 
 
 
@@ -22,7 +14,6 @@ class YouTube
 	
 	public $Video_Info = "";
 	public $Video_Info_Asoc = Array();
-	public $Video_Status_Is_OK = "Default"; # Бесполезное опле, чисто для удобства дебага
 	
 	public $Player_Response_JSON_Full; # Кусок из Video_Info (копия)
 	
@@ -30,8 +21,10 @@ class YouTube
 	public $FIN_Video_Info_Asoc = array(); # 
 	public $FIN_Video_Thimbnails_Arr = array(); # Ссылки и размеры
 	public $FIN_Video_Itag_Info_Asoc_FULL = array(); # [itag][ключи]
-	public $FIN_Video_Itag_Info_Asoc_Video_MP4 = array(); # ТОЛЬКО MP4
-	public $FIN_Video_Itag_Info_Asoc_Audio = array(); # ТОЛЬКО AUDIO
+	
+	
+	#public $FIN_Video_Itag_Info_Asoc_Video_MP4 = array(); # ТОЛЬКО MP4
+	#public $FIN_Video_Itag_Info_Asoc_Audio = array(); # ТОЛЬКО AUDIO
 	
 	
 
@@ -445,6 +438,7 @@ class YouTube
 	
 	#############################################################
 	
+	/*
 	function Fill_FIN_Video_Itag_Info_Asoc_VIDEO_MP4( )
 	{
 		foreach($this->FIN_Video_Itag_Info_Asoc_FULL as $Key => $Val)
@@ -467,7 +461,7 @@ class YouTube
 			}	
 		}
 	}
-	
+	*/
 
 	
 	
