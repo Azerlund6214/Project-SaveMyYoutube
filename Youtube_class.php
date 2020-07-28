@@ -12,7 +12,7 @@
 
 
 
-class UNIV_PHP_YOUTUBE
+class YouTube
 {
 		
 	public $Get_Video_Info_URL_Pattern = "https://www.youtube.com/get_video_info?video_id="; # ОБЯЗАТЕЛЬНО протокол
@@ -30,32 +30,11 @@ class UNIV_PHP_YOUTUBE
 	public $FIN_Video_Info_Asoc = array(); # 
 	public $FIN_Video_Thimbnails_Arr = array(); # Ссылки и размеры
 	public $FIN_Video_Itag_Info_Asoc_FULL = array(); # [itag][ключи]
-	public $FIN_Video_Itag_Info_Asoc_Video_MP4 = array(); # ТОЛЬКО MP$
+	public $FIN_Video_Itag_Info_Asoc_Video_MP4 = array(); # ТОЛЬКО MP4
 	public $FIN_Video_Itag_Info_Asoc_Audio = array(); # ТОЛЬКО AUDIO
 	
 	
-	public $Valid_Itags = array(
-								#	"5",   # FLV 320 x 240
-								#	"34",  # FLV 640 x 360
-								#	"35",  # FLV 854 x 480
-									
-									
-									"160", # 160p = MP4  256 x 144 # Добавлял сам = есть вес видео
-									"133", # 240p = MP4  426 x 240 # Добавлял сам = есть вес видео
-									"18",  # 360p = MP4  640 x 360                  есть вес видео
-									"134", # 360p = MP4  640 x 360 # Добавлял сам = есть вес видео
-									"135", # 480p = MP4  480 x 854 # Добавлял сам
-									"136", # 720p = MP4 1280 x 720 # Добавлял сам = есть вес видео
-									"22",  # 720p = MP4 1280 x 720    багует размер файла(0мб)              нет веса видео
-									"37",  # MP4 1920 x 1080
-									"38",  # MP4 4096 x 1714
-									
-								#	"43",  # 360p = WEBM 640 x 360
-								#	"44",  # WEBM 854 x 480
-								#	"45",  # WEBM 1280 x 720
-									
-									"140"  # 140 = аудио (только один итаг)
-								);
+
 	
 
 	
