@@ -8,7 +8,6 @@
 	
 	######################
 	
-	$user_request_type = $_POST["radios"];
 	$user_request_url  = $_POST["url"];
 
 	if( isset($_POST["cb1_Echo_POST"]) )
@@ -50,7 +49,7 @@
 	
 	$YOUTUBE -> Fill_FIN_Video_Thimbnails_Arr(  );
 	if( isset($_POST["cb10_Echo_FIN_Video_Thumb_Url_Arr"]) )
-		SF::PRINTER($YOUTUBE->FIN_Video_Thimbnails_Url_Arr,"print_r" , "FIN_Video_Thimbnails_Url_Arr = Все Thimbnails");
+		SF::PRINTER($YOUTUBE->FIN_Video_Thimbnails_Arr,"print_r" , "FIN_Video_Thimbnails_Arr = Все Thimbnails");
 	
 	######################
 	
@@ -60,20 +59,12 @@
 	
 	######################
 	
-
-	
-	######################	
-	
 	$YOUTUBE -> Echo_Table(  );
 	
 	######################
 	
 	echo "<br>END";
 	exit;
-	
-	
-	
-	
 	
 	
 	
