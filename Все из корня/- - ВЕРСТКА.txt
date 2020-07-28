@@ -1,6 +1,0 @@
-https://ctrlq.org/code/19797-regex-youtube-id
-
-
-Стырить каркас  https://www.youtube.com/playlist?list=PLabXZ2v8FlJcED2f6WbGCrb0tAHWZtxo_
-
-123
