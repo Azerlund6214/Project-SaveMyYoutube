@@ -76,43 +76,45 @@
 		</style>
 		
 		<style>
-		
-		#form_buttons
-		{
-			background-color: #e8b3a3;
-		
-		
-		}
-		
-		#checkboxes
-		{
-			background-color: #a7a3e8;
-		
-		}
-		
-		#result_row
-		{
-			background-color: #a3e8cc;
-		
-		
-		}
-		
-		
-		
-		
-		#div_result
-		{
-			/* position: relative; */
-		
-			background: #a3e8cc; /* Цвет фона */
-			border: solid 1px black; /* Параметры рамки */
 			
-			width: 90%;
-			height: auto;
-			min-height: 300px;
+			#form_buttons
+			{
+				background-color: #e8b3a3;
+				
+				//height: 10vh;
+				min-height: 100px;
+			}
 			
-			margin: auto;
-		}
+			#checkboxes
+			{
+				background-color: #a7a3e8;
+			
+			}
+			
+			#result_row
+			{
+				background-color: #a3e8cc;
+			
+			
+			}
+			
+			
+			
+			
+			#div_result
+			{
+				/* position: relative; */
+			
+				background: #a3e8aa; /* Цвет фона */
+				border: solid 1px black; /* Параметры рамки */
+				
+				width: 90%;
+				height: auto;
+				min-height: 300px;
+				
+				margin: auto;
+			}
+			
 		</style>
 		
 		
@@ -120,7 +122,7 @@
 		<div class="container">
 		
 		
-			<form method="POST" id="form_get_tbl" action="javascript:void(null);" onsubmit="JS_AJAX_get_table()">
+			<form method="POST" id="form_get_tbl" action="javascript:void(null);" onsubmit="Exec_AJAX( 'Main_ajax.php' , '#form_get_tbl' , '#div_result' )">
 			<fieldset>
 				
 				<!-- Кнопка -->
@@ -172,17 +174,15 @@
 
 
 
-		<!-- Кнопка и чекбоксы, в двух строках -->
+		<!-- Результаты -->
 		<div class="container">
 			<div id="result_row" class="row">
 				<div class="col-12">
 				
 					<div id="div_result">
-							Независимо от типа запроса=вывести таблицу 
+							Таблица
 							<br>
-							(плейлист=неск строк, видео=1, музыка=потом)
-							<br>
-							Для скачки надо будет жать кнопки из таблицы
+							Таблица
 					</div>
 				
 				
@@ -192,9 +192,7 @@
 		
 		
 		
-					
-			
-			
+		
 		
 		
 
@@ -203,11 +201,6 @@
 		
 		<!-- Все по аяксу -->
 		<script type="text/javascript" language="javascript">
-			function JS_AJAX_get_table() 
-			{	Exec_AJAX( "Main_ajax.php" , "#form_get_tbl" , "#div_result" );		}
-			
-			
-			
 			
 			function Exec_AJAX( path , form_data , div_id )
 			{
@@ -218,7 +211,6 @@
 						  error:   function(xhr, str){ alert('Возникла ошибка: ' + xhr.responseCode); }				});
 			}
 			
-
 		</script>
 		
 		
