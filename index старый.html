@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+
+
+<html lang="ru">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <title>Save My Youtube</title>
+		
+		<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>
+		<script language="JavaScript" type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.js"></script>
+		
+        <!-- 
+			<link href="1.css" rel="stylesheet" type="text/css">
+		-->
+			
+    </head>
+	
+	
+	<style>
+	</style>
+
+
+	
+	<style>
+	#central-wrapper 
+	{ 
+		/* Основное содержание */
+		background: #e3e8cc; /* Цвет фона */
+		border: solid 1px black; /* Параметры рамки */
+		/* margin-left: 17%; /* Отступ слева с учетом ширины левой колонки */
+		
+		/*width: 80%; /* Ширина */
+		/*height: 100vh; /* 100vh - 100% от высоты viewport(окна браузера) */
+		
+		width:  66vw;	
+		height: 96vh;
+		
+		
+		
+		/*min-height: 80vh;
+		/* vh (высота видового экрана), 
+		   vw (ширина окна просмотра), 
+		   vmin (минимальная длина окна просмотра)
+		   vmax (максимальная длина окна просмотра) */
+		   
+		/* height: auto; /* Авто высота(под контент)*/
+		
+		margin: auto; /* Автовыравнивание по центру */
+		
+		/* margin-bottom: 5px; /* Отступ снизу */
+		
+		
+		
+	}
+	
+	#central-wrapper p
+	{
+		padding: 3px; /* Внутренние поля контента*/
+	}
+	
+	</style>
+	<div id="central-wrapper">
+	
+	
+	<!-- ########################################################################################################### -->
+	<form method="POST" id="form_get_tbl" action="javascript:void(null);" onsubmit="JS_AJAX_get_table()">
+		<fieldset>
+			<legend>Form Name</legend>
+
+
+			    <!-- Потом обернуть в DIV и поставить ему Hidden -->
+			    <input type="checkbox" name="cb1_Echo_POST" > Выводить пришедший POST
+			<br><input type="checkbox" name="cb4_Echo_Video_ID" > Вывести Извлеченный из URL Video_ID
+			<br><input type="checkbox" name="cb5_Echo_Video_Info_Asoc"  > Вывести Video_Info в Асоц массиве (около 500 элем)
+			<br><input type="checkbox" name="cb7_Echo_JSON_Full" > Вывести полный JSON
+			<br><input type="checkbox" name="cb8_Echo_JSON_Erased" > Вывести обрезанный JSON
+			<br><input type="checkbox" name="cb9_Echo_FIN_Video_Info_Asoc" checked> FIN = Вывести основную инфу о видео
+			<br><input type="checkbox" name="cb10_Echo_FIN_Video_Thumb_Url_Arr" > FIN = Вывести инфу о эскизах(заставке видео)
+			<br><input type="checkbox" name="cb11_Echo_FIN_Video_Itag_Info_Asoc_FULL" > FIN = Вывести инфу о ВСЕХ ITAG
+			
+			<hr>
+			<!-- Text input-->
+			
+			  <input id="textinput" name="url" type="text" 
+						placeholder="placeholder" size="60"
+						value="https://www.youtube.com/watch?v=JNtw9Cppo8k"
+						>
+
+			<hr>
+			<!-- Кнопка -->
+			<input type="submit" value="Вывести таблицу(ТОЛЬКО)"/>
+			
+		</fieldset>
+	</form>
+	
+	<!-- ########################################################################################################### -->
+	
+	<hr color=red>
+	
+	
+	<style>
+	#div_result
+	{
+		/* position: relative; */
+	
+		background: #a3e8cc; /* Цвет фона */
+		border: solid 1px black; /* Параметры рамки */
+		
+		width: 90%;
+		height: auto;
+		min-height: 300px;
+		
+		margin: auto;
+	}
+	</style>
+	
+	<div id="div_result">
+		Независимо от типа запроса=вывести таблицу 
+		<br>
+		(плейлист=неск строк, видео=1, музыка=потом)
+		<br>
+		Для скачки надо будет жать кнопки из таблицы
+	</div>
+	
+
+	
+	
+	</div>
+
+	
+	<!-- ########################################################################################################### -->
+	
+	<!-- Все по аяксу -->
+	<script type="text/javascript" language="javascript">
+		function JS_AJAX_get_table() 
+		{	Exec_AJAX( "Main_ajax.php" , "#form_get_tbl" , "#div_result" );		}
+		
+		
+		
+		
+		function Exec_AJAX( path , form_data , div_id )
+		{
+			$.ajax({  type: 'POST',
+					  url: path,
+					  data: $( form_data ).serialize(),
+					  success: function(data) { $( div_id ).html(data); },
+					  error:   function(xhr, str){ alert('Возникла ошибка: ' + xhr.responseCode); }				});
+		}
+		
+
+	</script>
+	
+	
+	<!-- ########################################################################################################### -->
+	
+	
+	
+	
+	
+	<!--
+	<div class="download-table">
+			<table>
+				<thead>
+					<tr class="w2">
+						<td><strong>Название</strong></td>
+						<td><strong>Платформа</strong></td>
+						<td><strong>Разрядность</strong></td>
+						<td><strong>Русская версия</strong></td>
+						<td><strong>Формат</strong></td>
+						<td><strong>Загрузка</strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Microsoft Word 2016</td>
+						<td>Windows 10</td>
+						<td>32Bit / 64Bit</td>
+						<td><i class="fa fa-check"></i></td>
+						<td>.exe</td>
+						<td>
+							<a class="" target="_blank" href=""><i class="fa fa-hdd-o"></i> <span>Скачать</span></a>
+						</td>
+					</tr>
+					<tr>
+						<td>Microsoft Word 2016</td>
+						<td>Windows 8.1</td>
+						<td>32Bit / 64Bit</td>
+						<td><i class="fa fa-check"></i></td>
+						<td>.exe</td>
+						<td>
+							<a class="" target="_blank" href=""><i class="fa fa-hdd-o"></i> <span>Скачать</span></a>
+						</td>
+					</tr>
+					<tr>
+						<td>Microsoft Word 2016</td>
+						<td>Windows 7</td>
+						<td>32Bit / 64Bit</td>
+						<td><i class="fa fa-check"></i></td>
+						<td>.exe</td>
+						<td>
+							<a class="" target="_blank" href=""><i class="fa fa-hdd-o"></i> <span>Скачать</span></a>
+						</td>
+					</tr>
+					<tr>
+						<td>Microsoft Word 2016</td>
+						<td>Windows&nbsp;XP</td>
+						<td>32Bit / 64Bit</td>
+						<td><i class="fa fa-check"></i></td>
+						<td>.exe</td>
+						<td>
+							<a class="" target="_blank" href=""><i class="fa fa-hdd-o"></i> <span>Скачать</span></a>
+						</td>
+					</tr>
+					<tr>
+						<td>Microsoft Word 2016</td>
+						<td>Windows Vista</td>
+						<td>32Bit / 64Bit</td>
+						<td><i class="fa fa-check"></i></td>
+						<td>.exe</td>
+						<td>
+							<a class="" target="_blank" href=""><i class="fa fa-hdd-o"></i> <span>Скачать</span></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	-->
+	
+	</body>
+
+</html>
