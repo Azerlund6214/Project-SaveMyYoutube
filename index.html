@@ -73,22 +73,33 @@
 		</style>
 		
 		<style>
-
+			
+			#banner
+			{
+				background-color: #b2e8a3;
+			
+				height: 25vh;
+			
+			
+			}
+			
+			
 			
 			#form_buttons
 			{
 				background-color: #e8b3a3;
 				
-				//height: 10vh;
-				min-height: 100px;
+				height: 15vh;
+				//min-height: 100px;
+
 			}
 			
 			#form_buttons div input[type=text]
 			{
 				padding-inline-start: 30px;
+				
 				width: 50%;
 				height: 45px;
-				
 				
 				border-radius: 20px;
 			}
@@ -96,7 +107,6 @@
 			#form_buttons div input[type=submit]
 			{
 			
-
 				height: 45px;
 			
 				border-radius: 15px;
@@ -111,7 +121,9 @@
 			#checkboxes
 			{
 				background-color: #a7a3e8;
-			
+				
+				height: 30vh;
+				
 			}
 			
 			
@@ -122,6 +134,7 @@
 			{
 				background-color: #a3e8cc;
 			
+				height: 30vh;
 			
 			}
 			
@@ -137,7 +150,6 @@
 				
 				width: 90%;
 				height: auto;
-				min-height: 300px;
 				
 				margin: auto;
 			}
@@ -148,6 +160,17 @@
 			
 			
 		</style>
+		
+		
+		
+		
+		<div class="container-fluid">
+			<div  class="row  ">
+				<div id="banner" class="col-12  ">
+					
+				</div>
+			</div>
+		</div>
 		
 		
 		<!-- Кнопка и чекбоксы, в двух строках -->
@@ -178,7 +201,7 @@
 				
 				<!-- Чекбоксы, убрать в выпадающий список -->
 				<div id="checkboxes" class="row  text-center">
-					<div class="col-12   ">
+					<div class="col-12  m-auto ">
 						
 							<input type="checkbox" name="cb1_Echo_POST" > Выводить пришедший POST
 						<br><input type="checkbox" name="cb4_Echo_Video_ID" > Вывести Извлеченный из URL Video_ID
@@ -213,6 +236,8 @@
 							Скачка полностью работает
 							<br>
 							Фронтенд <strong>временный</strong>, набросан по-быстренькому на bootstrap4
+							<br>
+							Нет адаптивности - сайт только для пк. Высоты секций заданы в %
 							<br>
 							Тут будет таблица с рузультатами
 					</div>
