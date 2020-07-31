@@ -76,6 +76,30 @@
 		</style>
 		
 		<style>
+		
+		#form_buttons
+		{
+			background-color: #e8b3a3;
+		
+		
+		}
+		
+		#checkboxes
+		{
+			background-color: #a7a3e8;
+		
+		}
+		
+		#result_row
+		{
+			background-color: #a3e8cc;
+		
+		
+		}
+		
+		
+		
+		
 		#div_result
 		{
 			/* position: relative; */
@@ -92,55 +116,83 @@
 		</style>
 		
 		
+		<!-- Кнопка и чекбоксы, в двух строках -->
 		<div class="container">
-			<div class="row">
+		
+		
+			<form method="POST" id="form_get_tbl" action="javascript:void(null);" onsubmit="JS_AJAX_get_table()">
+			<fieldset>
 				
+				<!-- Кнопка -->
+				<div id="form_buttons" class="row">
+					<div class="col-12">
+					
+								<!-- Text input-->
+								<input id="textinput" name="url" type="text" 
+											placeholder="placeholder" size="60"
+											value="https://www.youtube.com/watch?v=JNtw9Cppo8k"
+											>
+								
+								<!-- Кнопка -->
+								<input type="submit" value="Вывести таблицу(ТОЛЬКО)"/>
+					
+					</div>
+				</div>
+				<!-- /Кнопка -->
+				
+				
+				
+				<!-- Чекбоксы, убрать в выпадающий список -->
+				<div id="checkboxes" class="row">
+					<div class="col-12">
+						
+							<input type="checkbox" name="cb1_Echo_POST" > Выводить пришедший POST
+						<br><input type="checkbox" name="cb4_Echo_Video_ID" > Вывести Извлеченный из URL Video_ID
+						<br><input type="checkbox" name="cb5_Echo_Video_Info_Asoc"  > Вывести Video_Info в Асоц массиве (около 500 элем)
+						<br><input type="checkbox" name="cb7_Echo_JSON_Full" > Вывести полный JSON
+						<br><input type="checkbox" name="cb8_Echo_JSON_Erased" > Вывести обрезанный JSON
+						<br><input type="checkbox" name="cb9_Echo_FIN_Video_Info_Asoc" checked> FIN = Вывести основную инфу о видео
+						<br><input type="checkbox" name="cb10_Echo_FIN_Video_Thumb_Url_Arr" > FIN = Вывести инфу о эскизах(заставке видео)
+						<br><input type="checkbox" name="cb11_Echo_FIN_Video_Itag_Info_Asoc_FULL" > FIN = Вывести инфу о ВСЕХ ITAG
+						
+					</div>
+				</div>
+				<!-- /Чекбоксы -->
+			
+			
+			</fieldset>
+			</form>
+			
+			
+		</div>
+		
+
+
+		<hr color=red>
+
+
+
+		<!-- Кнопка и чекбоксы, в двух строках -->
+		<div class="container">
+			<div id="result_row" class="row">
 				<div class="col-12">
 				
-				
-					<form method="POST" id="form_get_tbl" action="javascript:void(null);" onsubmit="JS_AJAX_get_table()">
-						<fieldset>
-							
-							<!-- Text input-->
-							
-							<input id="textinput" name="url" type="text" 
-										placeholder="placeholder" size="60"
-										value="https://www.youtube.com/watch?v=JNtw9Cppo8k"
-										>
-							
-							<!-- Кнопка -->
-							<input type="submit" value="Вывести таблицу(ТОЛЬКО)"/>
-							
-							
-							<!-- Потом обернуть в DIV и поставить ему Hidden -->
-							<br><input type="checkbox" name="cb1_Echo_POST" > Выводить пришедший POST
-							<br><input type="checkbox" name="cb4_Echo_Video_ID" > Вывести Извлеченный из URL Video_ID
-							<br><input type="checkbox" name="cb5_Echo_Video_Info_Asoc"  > Вывести Video_Info в Асоц массиве (около 500 элем)
-							<br><input type="checkbox" name="cb7_Echo_JSON_Full" > Вывести полный JSON
-							<br><input type="checkbox" name="cb8_Echo_JSON_Erased" > Вывести обрезанный JSON
-							<br><input type="checkbox" name="cb9_Echo_FIN_Video_Info_Asoc" checked> FIN = Вывести основную инфу о видео
-							<br><input type="checkbox" name="cb10_Echo_FIN_Video_Thumb_Url_Arr" > FIN = Вывести инфу о эскизах(заставке видео)
-							<br><input type="checkbox" name="cb11_Echo_FIN_Video_Itag_Info_Asoc_FULL" > FIN = Вывести инфу о ВСЕХ ITAG
-							
-							
-						</fieldset>
-					</form>
+					<div id="div_result">
+							Независимо от типа запроса=вывести таблицу 
+							<br>
+							(плейлист=неск строк, видео=1, музыка=потом)
+							<br>
+							Для скачки надо будет жать кнопки из таблицы
+					</div>
 				
 				
 				</div>
-			
 			</div>
 		</div>
 		
-		<hr color=red>
+		
+		
 					
-			<div id="div_result">
-					Независимо от типа запроса=вывести таблицу 
-					<br>
-					(плейлист=неск строк, видео=1, музыка=потом)
-					<br>
-					Для скачки надо будет жать кнопки из таблицы
-			</div>
 			
 			
 		
