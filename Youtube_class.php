@@ -344,7 +344,7 @@ class YouTube
 	function Echo_Table( )
 	{
 	
-		echo "<table border=2px>
+		echo '<table border=2px class="result_table">
 					<thead>
 						<tr >
 							<td><strong>ITAG</strong></td>
@@ -357,7 +357,7 @@ class YouTube
 						</tr>
 					</thead>
 					<tbody>
-					";
+					';
 
 		foreach($this->FIN_Video_Itag_Info_Asoc_FULL as $One_Set)
 		{
