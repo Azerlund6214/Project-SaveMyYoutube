@@ -68,10 +68,7 @@
 			
 		}
 		
-		#central-wrapper p
-		{
-			padding: 3px; /* Внутренние поля контента*/
-		}
+
 		
 		</style>
 		
@@ -86,11 +83,25 @@
 				min-height: 100px;
 			}
 			
-			#form_buttons div
+			
+			#form_buttons div input[type=text]
 			{
-				margin: auto;
-				padding: 50px;
+				padding-inline-start: 30px;
+				width: 50%;
+				height: 45px;
 				
+				
+				border-radius: 20px;
+			}
+			
+			#form_buttons div input[type=submit]
+			{
+			
+
+				height: 45px;
+			
+				border-radius: 15px;
+			
 			}
 			
 			
@@ -126,23 +137,33 @@
 				margin: auto;
 			}
 			
+			
+			#div_result table
+			{
+			
+			
+			}
+			
+			
+			
+			
 		</style>
 		
 		
 		<!-- Кнопка и чекбоксы, в двух строках -->
-		<div class="container">
+		<div class="container-fluid">
 		
 		
 			<form method="POST" id="form_get_tbl" action="javascript:void(null);" onsubmit="Exec_AJAX( 'Main_ajax.php' , '#form_get_tbl' , '#div_result' )">
 			<fieldset>
 				
 				<!-- Кнопка -->
-				<div id="form_buttons" class="row">
-					<div class="col-12">
+				<div id="form_buttons" class="row text-center">
+					<div class="col-12 m-auto ">
 					
 								<!-- Text input-->
 								<input id="textinput" name="url" type="text" 
-											placeholder="placeholder" size="60"
+											placeholder="https://www.youtube.com/watch?v=JNtw9Cppo8k" size="80"
 											value="https://www.youtube.com/watch?v=JNtw9Cppo8k"
 											>
 								
@@ -156,8 +177,8 @@
 				
 				
 				<!-- Чекбоксы, убрать в выпадающий список -->
-				<div id="checkboxes" class="row">
-					<div class="col-12">
+				<div id="checkboxes" class="row  text-center">
+					<div class="col-12   ">
 						
 							<input type="checkbox" name="cb1_Echo_POST" > Выводить пришедший POST
 						<br><input type="checkbox" name="cb4_Echo_Video_ID" > Вывести Извлеченный из URL Video_ID
@@ -186,9 +207,9 @@
 
 
 		<!-- Результаты -->
-		<div class="container">
-			<div id="result_row" class="row">
-				<div class="col-12">
+		<div class="container-fluid">
+			<div id="result_row" class="row  ">
+				<div class="col-12  ">
 				
 					<div id="div_result">
 							Таблица
