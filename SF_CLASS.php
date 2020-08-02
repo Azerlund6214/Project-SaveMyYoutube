@@ -1,23 +1,34 @@
-﻿<?php
+<?php
 
 
 /**
- * Класс со множеством мелких, но полезных методов. Все статичное !!!
+ * Класс со множеством мелких, но полезных методов. Все статичное!!!
  * @method static потом()
  */
 class SF {
-
+	
+	
+	
+	public static $alphabet_eng_big = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	public static $alphabet_eng_sml = "abcdefghijklmnopqrstuvwxyz";
+	
+	public static $alphabet_rus_big = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+	public static $alphabet_rus_sml = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+	
+	public static $alphabet_nums = "0123456789";
+	
+	
+	
 	/**
 	 * 
 	 * 
 	 */
 	
-	//public function getConnection() { }
 	/**
-	 * Описание
-	 * @param integer $
-	 * @param string $
-	 * @return string 
+	 * Шаблон
+	 * @param integer $ -
+	 * @param string $ -
+	 * @return string
 	 */
 	
 	
@@ -41,12 +52,16 @@ class SF {
 		switch( $MODE )
 		{
 			case "print_r": 
+			case "print": 
 			case "P": 
+			case "p": 
 							print_r( $Traget );
 							break;
 			
 			case "var_dump":
+			case "var":
 			case "V":
+			case "v":
 							var_dump( $Traget );
 							break;
 							
@@ -83,7 +98,7 @@ class SF {
 				
 			case "VARS":
 				echo "<hr>Все ПОЛЯ класса:"; 
-				print_r( @get_object_vars( $this ) );
+				print_r( @get_object_vars( $target ) );
 				break;
 				
 			default:
@@ -247,7 +262,7 @@ class SF {
 	/**
 	 * Получить заголовки с любого сервера
 	 * @param string $URL = адрес сайта, Обязательно с протоколом!
-	 * @return string = 3-значный код ответа "404" ,  integer = -1(если ошибка)
+	 * @return string = 3-значный код ответа "404" и тд ,  bool = false (если ошибка)
 	 */
 	public static function Get_HTTP_Response( $URL = "https://yandex.ru" )
 	{
@@ -261,26 +276,282 @@ class SF {
 		$Answer = @get_headers( $URL , 1 ); # Без 1 будет не асоциативный(Все в кучу)
 		
 		if( empty($Answer) )
-			return -1;
+			return false;
 		
 		return substr($Answer[0], 9, 3 ); // HTTP/1.1 404 Not Found
 		
 	}
 	
 	
+	/**
+	 * Возвращает случайную строку заданной длинны состоящую из заданного алфавита.
+	 * @param integer $length - Длина желаемой строки
+	 * @param string $alphabet - Алфавит для генерации (есть дефолтный)
+     * @return string
+	 */
+	public static function Get_Random_String( $length = 10, $alphabet = "Default" )
+	{
+		
+		if ( $alphabet === "Default" )
+			$alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		
+		srand((double)microtime()*1000000); # Увеличиваем рандомность
+		
+		$strlength = strlen($alphabet);
+		
+		$random = '';
+		
+		# Альтернатива - $random = substr(str_shuffle($alphabet), 0, $length);
+		for ($i = 0; $i < $length; $i++)
+			$random .= $alphabet[rand(0, $strlength - 1)];
+		
+		return $random;
+	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/**
+	 * Возвращает случайную удобночитаемую строку заданной длинны. (алфавит - маленькие англ буквы)
+	 * @param integer $length - Длина желаемой строки
+	 * @param bool $Big_first_char - Делать ли первую букву заглавной
+     * @return string
+	 */
+	public static function Get_Random_String_Readable( $length = 10 , $Big_first_char = true )
+	{
+		$c = array('b','c','d','f','g','h','j','k','l','m','n','p','r','s','t','v','w','x','y','z');
+		$v = array('a','e','i','o','u');
+		
+		srand((double)microtime()*1000000); # Увеличиваем рандомность
+		
+		$max = $length / 2;
+		
+		$random = '';
+		
+		for ($i = 1; $i <= $max; $i++)
+		{
+			$random .= $c[rand(0,19)];
+			$random .= $v[rand(0,4)];
+		}
+		
+		if( $Big_first_char )
+				$random[0] = strtoupper( $random[0] );
+		
+		return $random; 
+	}
+
+
+    /**
+     * Выводит полный стек вызовов функций
+     * @param bool $Exit_after_echo - Завершать ли работу после вывода
+     */
+    public static function Echo_Call_Stack( $Exit_after_echo = true )
+    {
+        # http://php.net/manual/ru/function.debug-backtrace.php
+
+
+        SF::PRINTER(debug_backtrace());
+
+
+        $result = array();
+        foreach( debug_backtrace() as $one )
+        {
+            $text  = @$one['class'];
+            $text .= @$one['type'];
+            $text .= @$one['function'];
+            $text .= "( ";
+
+
+            //$text .= count(@$one['args'])." Аргумента";
+
+            /*
+            foreach ( @$one['args'] as $arg )
+            {
+                //echo "<br>".print_r($arg);
+
+
+                //$text .= var_dump($arg);
+                //$text .= "";
+
+            }*/
+
+
+            $text .= " )";
+
+            //$text .= @$one[''];
+
+
+            $result []= $text;
+
+
+
+
+        }
+
+        SF::PRINTER($result);
+
+
+        # обратный фор с выводом и отступами
+
+
+        if( $Exit_after_echo )
+            exit("<hr>Выход из Echo_Call_Stack");
+    }
+
+
+
+
+
+    public static function Dir_Create( $path )
+    {
+        if ( is_dir($path) )
+            return true; // если есть такая папка
+
+        if( mkdir( $path, "777") )
+            return true;
+
+        return false;
+    }
+
+
+    public static function Dir_Exist( $path )
+    {
+        if ( is_dir($path) )
+            return true; // если есть такая папка
+
+        return false;
+    }
+
+    /**
+     * Рукурсивно удаляет папку со всеми файлами внутри!
+     * Удаляет в том числе скрытые файлы (начинающиеся с точки)
+     * Удаляет ссылочные файлы не трогая файлы куда ведет ссылка
+     * @param $path - ФОРМАТ: "Папка1/Папка2" - МОЖНО слеш в конце
+     */
+    public static function Dir_Delete( $path )
+    {
+        $includes = glob($path.'/{,.}*', GLOB_BRACE);
+        $systemDots = preg_grep('/\.+$/', $includes);
+
+        foreach ($systemDots as $index => $dot) {
+
+            unset($includes[$index]);
+        }
+
+        foreach ($includes as $include) {
+
+            if(is_dir($include) && !is_link($include)) {
+
+                SF::Dir_Delete($include);
+            }
+
+            else {
+
+                unlink($include);
+            }
+        }
+
+        rmdir($path);
+
+
+    }
+
+    /**
+     * Рукурсивно удаляет папку со всеми файлами внутри!
+     * Удаляет в том числе скрытые файлы (начинающиеся с точки)
+     * Удаляет ссылочные файлы не трогая файлы куда ведет ссылка
+     * @param $path - ФОРМАТ: "Папка1/Папка2" - БЕЗ слешей по краям
+     */
+    public static function Dir_Delete_2( $path )
+    {
+
+        if( ! SF::Dir_Exist($path) )
+            return;
+
+        $includes = new FilesystemIterator($path); // Встроенная библиотека
+
+        foreach ($includes as $include)
+        {
+
+            if(is_dir($include) && !is_link($include))
+            {
+
+                SF::Dir_Delete($include);
+            }
+
+            else
+            {
+                unlink($include);
+            }
+        }
+
+        rmdir($path);
+
+    }
+
+
+
+    public static function File_Create( $file_name )
+    {
+        if ( file_exists($file_name) ) //
+            return;
+
+        $fp = fopen($file_name, 'w+'); // Создаем файл
+        fclose($fp);
+
+    }
+
+    public static function File_Exist( $file_name )
+    {
+        if ( file_exists( $file_name) )
+            return true; // если есть такая папка
+
+        return false;
+
+    }
+
+    public static function File_Clear( $file_name )
+    {
+        $fp = fopen($file_name, 'w+'); //
+        fclose($fp);
+    }
+
+    public static function File_Put( $file_name , $text , $new_line = true)
+    {
+        $fp = fopen($file_name, 'a+'); //
+
+
+        fwrite($fp, $text);
+
+        if($new_line)
+            fwrite($fp, PHP_EOL);
+
+        fclose($fp);
+
+        /*
+            fwrite ($fp, "\n");
+            fwrite ($fp, "\r\n");
+            fwrite ($fp, chr(0x0a));
+            fwrite ($fp, PHP_EOL);
+        */
+    }
+
+    public static function File_Delete( $file_name )
+    {
+        if ( file_exists($file_name) ) //
+            unlink( $file_name );
+    }
+
+
+    /* 'r'  - Чтение ; Начало файла
+     * 'r+' - Чт/Зап ; Начало файла
+     * 'w'  - Запись ; Начало файла ; Создаем если нет ; Очистить файл.
+     * 'w+' - Чт/Зап ; Начало файла ; Создаем если нет ; Очистить файл.
+     * 'a'  - Запись ; Конец файла  ; Создаем если нет.
+     * 'a+' - Чт/Зап ; Конец файла  ; Создаем если нет. */
+
+
+
+
+
 
 } # End class
 
